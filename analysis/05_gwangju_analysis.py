@@ -7,6 +7,8 @@
 패널3: 광주 1인가구 vs 국평/소형 (미스매치 진단).
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import csv
 from collections import defaultdict
 import matplotlib
@@ -16,8 +18,8 @@ import numpy as np
 
 plt.rcParams['font.family'] = 'AppleGothic'
 plt.rcParams['axes.unicode_minus'] = False
-RP = '/Users/Shared/seoyeon_research/realprice'
-POP = '/Users/Shared/seoyeon_research/population/city_1person_household_2015_2024.csv'
+RP = DATA_ROOT + '/realprice'
+POP = DATA_ROOT + '/population/city_1person_household_2015_2024.csv'
 YEARS = list(range(2015, 2026))
 AIRPORT_DONG = {'송정동','도산동','신촌동','우산동','신가동','운남동','도호동','황룡동','비아동','신창동','수완동','장덕동'}
 

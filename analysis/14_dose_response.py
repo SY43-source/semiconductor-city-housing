@@ -6,6 +6,8 @@
 시계열 겹침 + 용량반응 산점도(상관). '반도체를 날짜on/off'가 아니라 '연속 강도'로.
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import csv, sqlite3, statistics
 from collections import defaultdict
 import numpy as np
@@ -17,7 +19,7 @@ plt.rcParams['font.family']='AppleGothic'; plt.rcParams['axes.unicode_minus']=Fa
 YEARS=list(range(2015,2026))
 # 처치강도: 누적 가동 라인
 LINES={2015:0,2016:0,2017:1,2018:1,2019:1,2020:2,2021:2,2022:3,2023:3,2024:4,2025:4}
-DB='/Users/Shared/seoyeon_inventory_master.sqlite'; RP='/Users/Shared/seoyeon_research/realprice'
+DB=INVENTORY_DB; RP=DATA_ROOT + '/realprice'
 # 고덕 신규개발 세대수
 con=sqlite3.connect(DB)
 dev={y:0 for y in YEARS}

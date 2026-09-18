@@ -9,6 +9,8 @@
 출력: employment/godeok_demand_recalibrated.csv + 그림 32
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import os,sys,csv
 import numpy as np
 from scipy.optimize import brentq
@@ -16,7 +18,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 plt.rcParams['font.family']='AppleGothic'; plt.rcParams['axes.unicode_minus']=False
-EMP='/Users/Shared/seoyeon_research/employment'
+EMP=DATA_ROOT + '/employment'
 HH=['1인','2인','3인','4인','5인+']; SZ=np.array([1,2,3,4,5.5])
 
 # ── 사전분포 q: 고덕 연령구조 기반(24_design_model 산출) ──

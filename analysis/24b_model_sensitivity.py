@@ -5,13 +5,15 @@
 Hp=모델(24) 출력(고덕 신규유입): 1인39.3/2인23.6/3인18.6/4인14.6/5인+3.9. 공급=sqlite 실측.
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import os,sqlite3
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 plt.rcParams['font.family']='Helvetica'; plt.rcParams['axes.unicode_minus']=False
-DB='/Users/Shared/seoyeon_inventory_master.sqlite'
+DB=INVENTORY_DB
 HH=['1','2','3','4','5+']
 Hp=np.array([0.393,0.236,0.186,0.146,0.039]); Hp=Hp/Hp.sum()  # 모델 실측파생(고정)
 

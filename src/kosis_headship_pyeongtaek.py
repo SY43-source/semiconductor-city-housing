@@ -7,6 +7,9 @@ param: objL1=31070(평택 레거시코드), objL2=가구주연령(020=15-19 … 
   employment/pyeongtaek_head_age_hhsize_2024.csv — 행=가구주연령밴드, 열=가구원수 1~5+명 가구수
 용도: P(가구원수 h | 가구주연령 a) = 행 정규화. 헤드십 numerator(가구주수 by age)=T100 열.
 """
+import os as _os
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import os,sys,csv
 sys.path.insert(0, os.path.dirname(__file__))
 from kosis_client import kosis_get
@@ -38,7 +41,7 @@ for age in AGE_CODES:
     rec['5인+']=p5
     rows.append(rec)
 
-out='/Users/Shared/seoyeon_research/employment/pyeongtaek_head_age_hhsize_2024.csv'
+out=DATA_ROOT + '/employment/pyeongtaek_head_age_hhsize_2024.csv'
 os.makedirs(os.path.dirname(out),exist_ok=True)
 cols=['age_code','age','총가구','1인','2인','3인','4인','5인+']
 with open(out,'w',newline='') as f:

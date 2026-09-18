@@ -5,6 +5,8 @@
 데이터: 고덕 유입(DT_1B04005N), 파라미터 P1 CSV. 볼륨은 신도시 계획인구로 스케일(참고).
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import os,sys,csv
 import numpy as np
 import matplotlib
@@ -13,7 +15,7 @@ import matplotlib.pyplot as plt
 plt.rcParams['font.family']='AppleGothic'; plt.rcParams['axes.unicode_minus']=False
 sys.path.insert(0, os.path.join(os.path.dirname(__file__),'..','src'))
 from kosis_client import kosis_get
-EMP='/Users/Shared/seoyeon_research/employment'; HH=['1인','2인','3인','4인','5인+']
+EMP=DATA_ROOT + '/employment'; HH=['1인','2인','3인','4인','5인+']
 BANDS=[('20~24세','20 - 24세'),('25~29세','25 - 29세'),('30~34세','30 - 34세'),('35~39세','35 - 39세'),
        ('40~44세','40 - 44세'),('45~49세','45 - 49세'),('50~54세','50 - 54세'),('55~59세','55 - 59세'),
        ('60~64세','60 - 64세'),('65~69세','65 - 69세'),('70~74세','70 - 74세'),('75~79세','75 - 79세'),

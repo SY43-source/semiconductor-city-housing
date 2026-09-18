@@ -6,6 +6,8 @@ P1 데이터: 고덕 5세별(DT_1B04005N), 헤드십(pyeongtaek_headship_2024), 
 규격/방수 매핑 M은 문헌·상식 가정(민감도 후속). 점유 T·가구화는 실측.
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import os,sys,csv,sqlite3
 import numpy as np
 import matplotlib
@@ -14,7 +16,7 @@ import matplotlib.pyplot as plt
 plt.rcParams['font.family']='AppleGothic'; plt.rcParams['axes.unicode_minus']=False
 sys.path.insert(0, os.path.join(os.path.dirname(__file__),'..','src'))
 from kosis_client import kosis_get
-EMP='/Users/Shared/seoyeon_research/employment'; DB='/Users/Shared/seoyeon_inventory_master.sqlite'
+EMP=DATA_ROOT + '/employment'; DB=INVENTORY_DB
 HH=['1인','2인','3인','4인','5인+']
 
 # ── 1) 고덕 연령유입 nₐ (2018→2025 순증), 가구주연령 밴드(20-24..85+) ──

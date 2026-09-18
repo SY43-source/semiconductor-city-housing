@@ -51,11 +51,11 @@
 세 시나리오(소형 선호 강·기준·대형 선호 강)로 `M`을 변주한 결과, **방수 축 1–2방 부족은 모든 시나리오에서 부호가 유지**된다(−15.7 ~ −25.4%p). 반면 **면적 축은 평균 가구원수 `m̄` 가정에 민감**하여, 1차 산정(m̄=2.18)에서는 소형이 −5.8 ~ −33.2%p 부족으로, 고덕 특화 재추정(m̄=2.99–3.46)에서는 +0.6 ~ +9.5%p 과잉으로 부호가 반전된다. 이것이 본문 §V.2에서 "방수 축 결론은 모수 선택에 강건하고 면적 축은 조건부"라고 서술한 근거다.
 
 **부그림 A1. gap 민감도 — 규격매핑 변주** / **Figure A1. Sensitivity of the gap to mapping assumptions**
-![부그림A1](../analysis/21b_gap_sensitivity.png)
+![부그림A1](../../analysis/21b_gap_sensitivity.png)
 <sub>Source: 저자 계산(`analysis/21b_gap_sensitivity.py`). ⚠️ 본 그림은 1차 산정(m̄=2.18) 기준이므로, 소형 부족이라는 표시는 §IV.4-(1)에서 기각된 모수에 대한 결과다. 매핑 변주에 대한 **상대적 민감도의 크기**를 읽는 용도로만 해석해야 한다.</sub>
 
 **부그림 A3. 설계 사슬의 모델 민감도** / **Figure A3. Model sensitivity of the design chain**
-![부그림A3](../analysis/24b_model_sensitivity.png)
+![부그림A3](../../analysis/24b_model_sensitivity.png)
 <sub>Source: 저자 계산(`analysis/24b_model_sensitivity.py`).</sub>
 
 ---
@@ -65,7 +65,7 @@
 본문 §IV.1에서 요약한 배경 검증의 근거다. 국민평형화·소형 감소는 안성·광주(반도체 前 시점)에서도 동일하거나 더 강하게 나타나고, 거시(팬데믹·금리) 사이클을 보정하면 평택 고유 추세가 사라진다. 따라서 본 연구는 규격 '추세' 자체를 반도체 효과로 귀속시키지 않으며, 초점은 **고덕의 국지 인구 구조와 공급 규격의 정합성**에 있다.
 
 **부그림 A2. 규격의 전국성 — 거시 사이클 보정** / **Figure A2. Nationwide nature of the unit-size trend**
-![부그림A2](../analysis/08_macro_adjusted.png)
+![부그림A2](../../analysis/08_macro_adjusted.png)
 <sub>Source: 저자 계산(`analysis/08_macro_adjusted.py`).</sub>
 
 ---
@@ -89,7 +89,7 @@
 점유 축에는 두 단계의 조정이 겹친다. **첫째, flow→stock 보정**이 필요한 이유는 실거래가 **거래 건수**이므로 회전율이 빠른 월세가 과대표집되기 때문이다(원자료 기준 월세 64% → stock 보정 50%). **둘째, 고덕 특화 보정**이 소가구 비중을 줄이면서 소형 수요가 축소되고, 소형에 집중된 월세 성향이 함께 약해져 월세 수요가 50%에서 **43%** 로 한 번 더 내려간다. 두 조정을 모두 적용해도 월세 수요는 여전히 40%대로 대조도시 대비 국지적으로 높으며, 규격 다양화·접근성 결론을 뒤집지 않는다.
 
 **부그림 A4. 점유 회전율 보정 — flow vs stock** / **Figure A4. Tenure turnover adjustment**
-![부그림A4](../analysis/26_tenure_stock_adjust.png)
+![부그림A4](../../analysis/26_tenure_stock_adjust.png)
 <sub>Source: 저자 계산(`analysis/26_tenure_stock_adjust.py`).</sub>
 
 ---
@@ -121,7 +121,7 @@
 로지스틱 기각의 의미는 방법론적으로 §V.2의 첫 번째 교훈과 같다. 계획 수용인구를 포화점으로 고정하면 초기 급성장 구간의 기울기가 포화 속도로 과대 외삽되며, 이 편향은 **사후 검증(backcast) 없이는 드러나지 않았다.**
 
 **부그림 A5. 인구 예측 모형 검증 — rolling-origin backcast** / **Figure A5. Backcast validation of the population forecast**
-![부그림A5](../analysis/31_backcast_validation.png)
+![부그림A5](../../analysis/31_backcast_validation.png)
 <sub>Source: 저자 계산(`analysis/31_backcast_validation.py`).</sub>
 
 ---

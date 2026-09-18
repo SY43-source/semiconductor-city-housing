@@ -6,6 +6,8 @@
 게이트: MAPE 양호 시 v7에 연도별 점추정 게재, 나쁘면 밴드만 게재.
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import os,sys,csv
 import numpy as np
 from scipy.optimize import curve_fit
@@ -13,7 +15,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 plt.rcParams['font.family']='Helvetica'; plt.rcParams['axes.unicode_minus']=False
-POP='/Users/Shared/seoyeon_research/population/godeok_age_year_matrix.csv'
+POP=DATA_ROOT + '/population/godeok_age_year_matrix.csv'
 K_POP=144173.0          # 고덕국제신도시 계획 수용인구(공시)
 rows=list(csv.DictReader(open(POP)))
 year=np.array([int(r['year']) for r in rows])
@@ -89,8 +91,8 @@ out=[]
 for y,p,b in zip(fut,pred,band):
     print(f"{y}  {p:9,.0f}  ±{b:7,.0f}   {p/K_POP*100:5.1f}%")
     out.append((y,p,b))
-os.makedirs('/Users/Shared/seoyeon_research/population',exist_ok=True)
-with open('/Users/Shared/seoyeon_research/population/godeok_pop_forecast_annual.csv','w',newline='') as f:
+os.makedirs(DATA_ROOT + '/population',exist_ok=True)
+with open(DATA_ROOT + '/population/godeok_pop_forecast_annual.csv','w',newline='') as f:
     w=csv.writer(f); w.writerow(['year','pred_pop','band','share_of_K'])
     for y,p,b in out: w.writerow([y,f'{p:.0f}',f'{b:.0f}',f'{p/K_POP:.4f}'])
 print("✅ godeok_pop_forecast_annual.csv")

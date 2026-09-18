@@ -20,6 +20,9 @@ JOBS={'v12':('MANUSCRIPT_v12','ko'),'v12en':('MANUSCRIPT_v12_EN','en2'),
       'v8':('MANUSCRIPT_v8','ko'),'v8en':('MANUSCRIPT_v8_EN','en'),
       'v7':('MANUSCRIPT_v7','ko'),'v7en':('MANUSCRIPT_v7_EN','en'),
       'en':('MANUSCRIPT_v12_EN','en2')}
+# 정본은 안정 파일명으로 출력한다(원서·인용 링크가 판올림에 깨지지 않도록)
+OUT={'MANUSCRIPT_v12':'Semiconductor-City-Housing-KO','MANUSCRIPT_v12_EN':'Semiconductor-City-Housing-EN',
+     'APPENDIX_v12':'Appendix-KO','APPENDIX_v12_EN':'Appendix-EN'}
 ALL=['v12','v12en','appendix','appendixen']
 TARGET=(sys.argv[1] if len(sys.argv)>1 else 'all')
 SEL=[JOBS[k] for k in ALL] if TARGET=='all' else [JOBS[TARGET]]
@@ -127,8 +130,8 @@ div[align="right"] { color:#555; font-size:8.5pt; }
 """ % {'body':body_f,'head':head_f,'fs':fs}
 
 for name,lang in SEL:
-    MD   = f'{BASE}/research/{name}.md'
-    PDF  = f'{BASE}/research/{name}.pdf'
+    MD   = f'{BASE}/paper/source/{name}.md'
+    PDF  = f'{BASE}/paper/{OUT.get(name, name)}.pdf'
     HTML = f'/private/tmp/_render_{name}.html'
     src=open(MD,encoding='utf-8').read()
     src=re.sub(r'^<!--.*?-->\s*','',src,flags=re.S|re.M)                      # 편집용 주석 제거
@@ -150,6 +153,7 @@ for name,lang in SEL:
         # ② 남은 표·본문 캡션 줄을 단 전체 폭 블록으로
         src=re.sub(r'^<sub>(.*?)</sub>\s*$', r'<div class="cap"><sub>\1</sub></div>', src, flags=re.M|re.S)
     body=markdown.markdown(src, extensions=['tables','fenced_code','sane_lists','attr_list','md_in_html','nl2br'])
+    body=body.replace('src="../../analysis/', f'src="file://{ANALYSIS}/')
     body=body.replace('src="../analysis/', f'src="file://{ANALYSIS}/')        # 이미지 절대경로
     if lang=='en2':   # WeasyPrint 는 table/img 자체에 column-span 을 적용하지 않는다 → 래퍼로 감싼다
         body=re.sub(r'(<table>.*?</table>)', r'<div class="wide">\1</div>', body, flags=re.S)
@@ -160,5 +164,5 @@ for name,lang in SEL:
     r=subprocess.run(['weasyprint',HTML,PDF],capture_output=True,text=True)
     if r.returncode!=0:
         print(f"❌ {name} weasyprint 실패:\n",r.stderr[-1500:]); raise SystemExit(1)
-    print(f"✅ {name}.pdf ({os.path.getsize(PDF)/1024/1024:.2f} MB, lang={lang})")
+    print(f"✅ {os.path.basename(PDF)} ({os.path.getsize(PDF)/1024/1024:.2f} MB, lang={lang}) ← {name}.md")
     if r.stderr.strip(): print("  경고:",r.stderr.strip()[-300:])

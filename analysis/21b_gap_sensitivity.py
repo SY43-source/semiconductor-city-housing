@@ -4,13 +4,15 @@
 공급=고덕(sqlite). Gap=공급-수요(음수=부족). 결론: 소형 부족은 모든 시나리오서 음수(강건).
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import sqlite3
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 plt.rcParams['font.family']='Helvetica'; plt.rcParams['axes.unicode_minus']=False
-DB='/Users/Shared/seoyeon_inventory_master.sqlite'
+DB=INVENTORY_DB
 # 공급(고덕)
 con=sqlite3.connect(DB)
 q="""SELECT CASE WHEN p.exclusive_area_m2<60 THEN 0 WHEN p.exclusive_area_m2<85 THEN 1 ELSE 2 END b,SUM(p.units_of_same_area) u

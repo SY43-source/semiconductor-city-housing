@@ -5,14 +5,16 @@
 산출: employment/godeok_affordability.csv + 그림 35
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import os,csv,sqlite3,statistics as st
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 plt.rcParams['font.family']='Helvetica'; plt.rcParams['axes.unicode_minus']=False
-RP='/Users/Shared/seoyeon_research/realprice'; EMP='/Users/Shared/seoyeon_research/employment'
-DB='/Users/Shared/seoyeon_inventory_master.sqlite'
+RP=DATA_ROOT + '/realprice'; EMP=DATA_ROOT + '/employment'
+DB=INVENTORY_DB
 BANDS=['Small<60','Standard 60-85','Large 85+']
 # ⚠️ 고덕 판별은 **법정동 기준**. 단지명 '고덕' 매칭은 금지 —
 #    FP: 이충동 소재 '고덕시티'·'고덕코아루더블루시티'(구도심) 오포착

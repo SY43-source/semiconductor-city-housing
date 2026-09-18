@@ -24,11 +24,14 @@
   employment/godeok_tenure_by_size.csv             T_(s,k)
 출력: employment/godeok_forecast_recalibrated.csv  (원고 §IV.7-(5) 수치의 근거)
 """
+import os as _os
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import os, csv
 import numpy as np
 from scipy.optimize import brentq
 
-BASE = '/Users/Shared/seoyeon_research'
+BASE = DATA_ROOT
 EMP, POP = f'{BASE}/employment', f'{BASE}/population'
 HH = ['1인', '2인', '3인', '4인', '5인+']
 SZ = np.array([1, 2, 3, 4, 5.5])                      # 5인+ 대표값 5.5 (32 와 동일)

@@ -5,13 +5,15 @@
 데이터: control_regions_pop_2000_2025.csv (진천 제거 후 재기록).
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import csv
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 plt.rcParams['font.family']='AppleGothic'; plt.rcParams['axes.unicode_minus']=False
-CSV='/Users/Shared/seoyeon_research/population/control_regions_pop_2000_2025.csv'
+CSV=DATA_ROOT + '/population/control_regions_pop_2000_2025.csv'
 DROP='진천'
 rows=[r for r in csv.DictReader(open(CSV,encoding='utf-8-sig')) if DROP not in r['region']]
 # 원천 CSV에서 진천 제거하여 재기록

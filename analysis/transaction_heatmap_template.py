@@ -15,6 +15,8 @@
 데이터: shared_data/realprice/realprice_apt_trade.csv
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import csv, argparse
 from collections import Counter, defaultdict
 import matplotlib
@@ -25,7 +27,7 @@ import numpy as np
 plt.rcParams['font.family'] = 'AppleGothic'
 plt.rcParams['axes.unicode_minus'] = False
 
-CSV = '/Users/Shared/seoyeon_research/realprice/realprice_apt_trade.csv'
+CSV = DATA_ROOT + '/realprice/realprice_apt_trade.csv'
 AREA_BINS = [(0,60,'~60㎡\n(소형)'),(60,85,'60-85㎡\n(국평3방)'),(85,102,'85-102㎡'),
              (102,135,'102-135㎡\n(4방)'),(135,999,'135㎡+\n(대형)')]
 

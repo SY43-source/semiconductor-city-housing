@@ -9,6 +9,8 @@
 데이터: city_1person_household_2015_2024.csv + realprice(평택/안성).
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import csv
 from collections import defaultdict
 import matplotlib
@@ -19,8 +21,8 @@ import numpy as np
 plt.rcParams['font.family'] = 'AppleGothic'
 plt.rcParams['axes.unicode_minus'] = False
 
-POP = '/Users/Shared/seoyeon_research/population/city_1person_household_2015_2024.csv'
-RP = '/Users/Shared/seoyeon_research/realprice'
+POP = DATA_ROOT + '/population/city_1person_household_2015_2024.csv'
+RP = DATA_ROOT + '/realprice'
 YEARS = list(range(2015, 2025))  # 1인가구 데이터 범위에 맞춤
 
 # 1인가구 비율

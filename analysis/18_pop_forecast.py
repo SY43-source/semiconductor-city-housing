@@ -8,6 +8,8 @@ S3 포화(로지스틱 근사): 고덕 물량 소진 시 감속.
 데이터: control_regions_pop_2000_2025.csv (평택).
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import csv
 import numpy as np
 from scipy import stats
@@ -16,7 +18,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 plt.rcParams['font.family']='AppleGothic'; plt.rcParams['axes.unicode_minus']=False
-CSV='/Users/Shared/seoyeon_research/population/control_regions_pop_2000_2025.csv'
+CSV=DATA_ROOT + '/population/control_regions_pop_2000_2025.csv'
 pt={int(r['year']):int(r['population'])/1000 for r in csv.DictReader(open(CSV,encoding='utf-8-sig')) if '평택' in r['region']}
 YR=np.array(sorted(pt)); POP=np.array([pt[y] for y in YR])
 FUT=np.array([2030,2035])

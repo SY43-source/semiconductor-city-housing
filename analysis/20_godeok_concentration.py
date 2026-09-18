@@ -3,12 +3,14 @@
 데이터: pyeongtaek_godeok_vs_rest_2013_2025.csv (KOSIS DT_1B04005N 읍면동).
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import csv
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 plt.rcParams['font.family']='Helvetica'; plt.rcParams['axes.unicode_minus']=False
-C='/Users/Shared/seoyeon_research/population/pyeongtaek_godeok_vs_rest_2013_2025.csv'
+C=DATA_ROOT + '/population/pyeongtaek_godeok_vs_rest_2013_2025.csv'
 rows=list(csv.DictReader(open(C,encoding='utf-8-sig')))
 yr=[int(r['year']) for r in rows]
 god=[int(r['godeok']) for r in rows]; exg=[int(r['pyeongtaek_ex_godeok']) for r in rows]; tot=[int(r['pyeongtaek_total']) for r in rows]

@@ -7,6 +7,8 @@
 ⚠️ 광주=지방 감소 대도시(평택=수도권 성장)라 baseline 정반대 → 강한 가정.
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import os,sys,csv
 import numpy as np
 from scipy import stats
@@ -22,7 +24,7 @@ def kosis(code):
     return {int(x['PRD_DE']):int(x['DT'])/1000 for x in d}
 gs=kosis('29200')  # 광산구
 # 평택
-CSV='/Users/Shared/seoyeon_research/population/control_regions_pop_2000_2025.csv'
+CSV=DATA_ROOT + '/population/control_regions_pop_2000_2025.csv'
 pt={int(r['year']):int(r['population'])/1000 for r in csv.DictReader(open(CSV,encoding='utf-8-sig')) if '평택' in r['region']}
 
 # 평택 event-time (τ0=2017)

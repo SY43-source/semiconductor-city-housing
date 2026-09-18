@@ -7,6 +7,8 @@
 ★ 검증 결과: barbell은 **방수 축**의 현상이며, 면적 축은 '대형 부족' 단방향(수요는 가족쪽 단봉).
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import os,sqlite3
 import numpy as np
 from scipy.stats import norm, gaussian_kde
@@ -15,7 +17,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 plt.rcParams['font.family']='AppleGothic'; plt.rcParams['axes.unicode_minus']=False
-DB='/Users/Shared/seoyeon_inventory_master.sqlite'
+DB=INVENTORY_DB
 HH=['1인','2인','3인','4인','5인+']; SZ=np.array([1,2,3,4,5.5])
 PREF={'1인':(42,18),'2인':(60,15),'3인':(74,11),'4인':(81,11),'5인+':(86,8)}   # M^A 정합 캘리브
 MA={'1인':[.85,.15,0],'2인':[.50,.45,.05],'3인':[.10,.75,.15],'4인':[.03,.62,.35],'5인+':[0,.45,.55]}

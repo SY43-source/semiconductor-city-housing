@@ -9,6 +9,8 @@ DiD = (평택_post - 평택_pre) - (안성_post - 안성_pre).  pre=2015–16, p
 데이터: realprice_apt_trade.csv(평택) + realprice_apt_trade_anseong.csv(안성).
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import csv
 from collections import defaultdict
 import matplotlib
@@ -19,7 +21,7 @@ import numpy as np
 plt.rcParams['font.family'] = 'AppleGothic'
 plt.rcParams['axes.unicode_minus'] = False
 
-BASE = '/Users/Shared/seoyeon_research/realprice'
+BASE = DATA_ROOT + '/realprice'
 def load(path, region=None):
     rows = []
     for r in csv.DictReader(open(path, encoding='utf-8-sig')):

@@ -143,7 +143,7 @@ Godeok accounts for roughly 38% of Pyeongtaek's net population increase (2013→
 **The unit-size *trend* itself, however, is a nationwide structure, and we note this at the outset.** Convergence on the standard size and the decline of small units appear equally or more strongly in Anseong and Gwangju (before any semiconductor investment), and adjusting for macro cycles (pandemic, interest rates) removes any Pyeongtaek-specific trend (Figure A2). The focus of this study is therefore not "did semiconductors change unit composition" but **"is the supplied composition consistent with Godeok's particular population"** — which is also why this study does not attribute every supply mismatch to a semiconductor effect.
 
 **Fig.1. Concentration in Godeok vs. rest of Pyeongtaek**
-![Figure1](../analysis/20_godeok_concentration.png)
+![Figure1](../../analysis/20_godeok_concentration.png)
 <sub>Source: author's analysis based on KOSIS DT_1B04005N.</sub>
 
 ### 4.2 Age structure of the inflow
@@ -163,7 +163,7 @@ The center of gravity of the inflow (2018→2025) is working-age adults 25–39 
 Godeok's child share is 1.9 times the national figure and its elderly share less than half Pyeongtaek's. The upper bound on mean household size is 3.46, obtained by dividing Godeok's population (77,337) by its apartment units (22,368); excluding the pre-development base population (10,382 in 2018, non-apartment housing in the former Godeok-myeon) gives 2.99 as a conservative lower bound. Both exceed the city average (2.18) by a wide margin. Consequently, **the city-wide single-person household share (37.5%) arises largely from elderly one-person households in the old urban core, and substituting it for Godeok demand systematically overstates small-unit demand** (corrected in §4.4).
 
 **Fig.2. Age structure of the Godeok inflow — working age (25–39) plus young children**
-![Figure2](../analysis/22_godeok_age.png)
+![Figure2](../../analysis/22_godeok_age.png)
 <sub>Source: author's analysis based on KOSIS DT_1B04005N (Godeok-myeon, Godeok-dong).</sub>
 
 ### 4.3 Composition of new housing supply
@@ -233,7 +233,7 @@ The two columns say different things, and both are true. Small and one- to two-b
 The prescription is therefore not the single-track "expand small units" but **"relax the single three-bedroom / standard-size template, with different remedies on each axis."**
 
 **Fig.3. Demand recalibration and the resulting unit-composition mismatch**
-![Figure3](../analysis/37_gap_consolidated.png)
+![Figure3](../../analysis/37_gap_consolidated.png)
 <sub>Source: author's calculation (`analysis/37_gap_consolidated.py`). ① household-size distribution under the rejected city-wide parameters and the Godeok-specific corrected band; ② floor-area demand after correction (error bars = band across the three anchors) against supply; ③ the same contrast on the room-count axis; ④ Pareto chart of supply unit groups (bars = share, line = cumulative). Boxed values in ② and ③ are the gap (supply − demand). Unit groups in ④ aggregate measured units into 1m² buckets and then merge contiguous runs into practical unit groups.</sub>
 
 ### 4.5 Market segmentation — small-unit demand realized through leases
@@ -253,7 +253,7 @@ Godeok's monthly-rent share exceeds both the control city (Anseong, 53.5%) and P
 ⚠️ Note that the area shares (small units 56–59%) are **transaction counts**, so fast-turnover small and monthly-rent units are over-sampled. The tenure axis was turnover-adjusted to stock (§4.7), but the corresponding correction on the area axis remains future work.
 
 **Fig.4. Lease market: where small-unit demand is realized**
-![Figure4](../analysis/10_rent_analysis.png)
+![Figure4](../../analysis/10_rent_analysis.png)
 <sub>Source: author's analysis based on MOLIT real transaction data.</sub>
 
 ### 4.6 The independent effect of spatial proximity — distance-to-campus hedonic
@@ -273,7 +273,7 @@ To partially separate whether Godeok's concentration stems from campus proximity
 Most of the price premium comes from continuous distance to the campus (−3.7%/km) rather than from the discrete new-town label (+3.2%) (Figure 5). The −3.7%/km gradient persists even in a subsample containing no new town at all, so the proximity effect is independent rather than a product of the new town. It is robust to relocating the campus reference point to the main gate, P2, or the centroid (−2.5 to −3.7%/km). This suggests that the unit of supply planning should be **commuting accessibility from the employment anchor**, not the administrative boundary of a new town.
 
 **Fig.5. Continuous distance-to-campus hedonic — separating proximity from the new town**
-![Figure5](../analysis/23_distance_hedonic.png)
+![Figure5](../../analysis/23_distance_hedonic.png)
 <sub>Source: author's calculation.</sub>
 
 ### 4.7 The age-inflow design model and the annual roadmap
@@ -319,7 +319,7 @@ As the cohort matures, the single-person share (16.0→12.9%), 1–2-room demand
 **(6) Practical use.** The chain is implemented in the companion tool [`design_simulator.html`](design_simulator.html), which recomputes the area-demand distribution curve, household-size composition, annual unit requirements, and design recommendations as inflow by age band, inflow scale, decay rate, and mean household size are adjusted. How results move as the inflow profile changes is summarized in Table A5. Lowering mean household size to 2.18 (Pyeongtaek as a whole) in the direct-entry mode reproduces the first pass's "small units short" conclusion, so a developer can see directly **how parameter choice changes the conclusion**.
 
 **Fig.6. Annual design roadmap — required units by size and scenario band**
-![Figure6](../analysis/33_annual_design_roadmap.png)
+![Figure6](../../analysis/33_annual_design_roadmap.png)
 <sub>Source: author's calculation (`analysis/33_annual_design_roadmap.py`, `27_forecast_design.py`).</sub>
 
 ⚠️ **Limitation**: the linear model reaches the planned population in 2032, after which net inflow and therefore new demand are computed as zero. In reality demand continues after saturation through household fission (children leaving home, divorce), so values after 2032 should be read as a **lower bound on inflow-based demand**. Annual inflow is also fixed at the recent three-year slope, so any change to campus expansion schedules (P4, P5) requires re-estimation.
@@ -439,7 +439,7 @@ One further caution: judging the supplier by the builder's name misreads the sit
 Figure 7 brings the chain together in three panels: PIR, burden ratios, and the inversion of tenure. Its implication is that unit diversification is not a matter of aesthetics or market efficiency but **a question of who can settle in this city**. Alternatives do exist — but **only in the public sector, while the private sector supplies no accessible price point at all**. If the gap of §4.4 is the language of planning, the access indicators of this section are **what that gap becomes when it reaches people**.
 
 <br>**Fig.7. Housing access — why young workers are pushed into monthly rent**
-![Figure7](../analysis/35_affordability.png)
+![Figure7](../../analysis/35_affordability.png)
 <sub>Source: MOLIT real transaction prices (2024–2025), NAVER Real Estate complex metadata, LH announcements; author's calculation. ① PIR against the international affordability threshold; ② mortgage payments vs. rent against the 30%-of-income line; ③ the inversion between planned tenure (97.0% for sale) and realized tenure (73.4% monthly rent).</sub>
 
 ⚠️ **Assumptions and limitations**: incomes are scenarios rather than measured values (no income data exist for Godeok's resident households); ownership burden assumes LTV 70%, 4% interest, and 30-year level payments; effective rent assumes a 5.5% jeonse conversion rate. Public-rental complexes are identified from transaction complex names and therefore carry the limitation of nominal classification, and the programme type and eligibility of the 2,249 private rental units are unconfirmed. The figures in Tables 7 and 7 should accordingly be read as indicating **the size of the gaps** between ownership and renting, and between public and private, rather than exact burden amounts. Those gaps are nonetheless too large to be reversed by varying the assumptions (the standard-size ownership burden exceeds the 30% line even under a relaxed 3% interest, 80% LTV assumption).

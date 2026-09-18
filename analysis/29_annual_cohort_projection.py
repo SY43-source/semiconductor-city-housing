@@ -5,11 +5,14 @@
       population/godeok_age_year_delta.csv   (연도별 순증 Δ = P_t - P_{t-1})
 용도: v7 §IV.9 연도별 예측(코호트 진행 + 유입 로지스틱)의 입력.
 """
+import os as _os
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import os,sys,csv
 from collections import OrderedDict
 sys.path.insert(0, os.path.join(os.path.dirname(__file__),'..','src'))
 from kosis_client import kosis_get
-OUT='/Users/Shared/seoyeon_research/population'
+OUT=DATA_ROOT + '/population'
 YEARS=list(range(2013,2026))
 CODES=['4122033000','4122066000']   # 고덕면 · 고덕동(2021~)
 

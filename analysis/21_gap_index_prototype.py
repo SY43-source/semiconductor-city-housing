@@ -4,14 +4,16 @@
 Gap = 공급% - 수요% (음수=부족·공급확대 필요 / 양수=과잉). 가구원수=평택 실측(DT_1JC1516), 규격매핑은 가정(감도분석 21b).
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import sqlite3
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 plt.rcParams['font.family']='AppleGothic'; plt.rcParams['axes.unicode_minus']=False
-DB='/Users/Shared/seoyeon_research/seoyeon_inventory_master.sqlite'
-DB='/Users/Shared/seoyeon_inventory_master.sqlite'
+DB=DATA_ROOT + '/seoyeon_inventory_master.sqlite'
+DB=INVENTORY_DB
 
 # 1) 가구형태 분포 (평택). ★실측: KOSIS DT_1JC1516 세대구성·가구원수별 가구, 평택(objL1=31070) 2024, 정규화(합=258,625)
 HH={'1인':0.3754,'2인':0.2745,'3인':0.1862,'4인':0.1340,'5인+':0.0300}

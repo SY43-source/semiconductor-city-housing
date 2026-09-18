@@ -24,4 +24,13 @@ export DATA_ROOT=/path/to/your/data
 export INVENTORY_DB=/path/to/complex_metadata.sqlite
 ```
 
-Scripts that still carry an absolute default path are listed in the repository issues; converting all of them to `DATA_ROOT` is in progress.
+Every script reads these two variables, falling back to the author's local paths when they are unset. Repository paths (where figures are written) resolve automatically from the script's own location, so no configuration is needed for those.
+
+Expected layout under `DATA_ROOT`:
+
+```
+realprice/     apartment sale and lease transactions, by region
+population/    KOSIS population and household tables
+employment/    manufacturing employment and household-size series
+housing_supply/  permits by unit size
+```

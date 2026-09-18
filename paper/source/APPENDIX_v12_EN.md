@@ -48,11 +48,11 @@ As stated in §III.3-1) of the manuscript, among the inputs to the chain, headsh
 Varying `M` across three scenarios (strong small-unit preference, baseline, strong large-unit preference), **the 1–2-room shortage on the room axis retains its sign in every scenario** (−15.7 to −25.4pp). The **floor-area axis, by contrast, is sensitive to the mean-household-size assumption `m̄`**: under the first pass (m̄=2.18) small units are short by 5.8 to 33.2pp, whereas under the Godeok-specific re-estimate (m̄=2.99–3.46) they are in surplus by 0.6 to 9.5pp — a sign reversal. This is the basis for the statement in §V.2 that the room-axis conclusion is robust to parameter choice while the area-axis conclusion is conditional.
 
 **Figure A1. Sensitivity of the gap to mapping assumptions**
-![FigureA1](../analysis/21b_gap_sensitivity.png)
+![FigureA1](../../analysis/21b_gap_sensitivity.png)
 <sub>Source: author's calculation (`analysis/21b_gap_sensitivity.py`). ⚠️ This figure is on a first-pass basis (m̄=2.18), so its indication of a small-unit shortage pertains to the parameter set rejected in §IV.4-(1). It should be read only for **the relative magnitude of sensitivity** to mapping variation.</sub>
 
 **Figure A3. Model sensitivity of the design chain**
-![FigureA3](../analysis/24b_model_sensitivity.png)
+![FigureA3](../../analysis/24b_model_sensitivity.png)
 <sub>Source: author's calculation (`analysis/24b_model_sensitivity.py`).</sub>
 
 ---
@@ -62,7 +62,7 @@ Varying `M` across three scenarios (strong small-unit preference, baseline, stro
 This is the evidence behind the background check summarized in §IV.1 of the manuscript. Convergence on the standard size and the decline of small units appear equally or more strongly in Anseong and Gwangju (before any semiconductor investment), and adjusting for macro cycles (pandemic, interest rates) removes any Pyeongtaek-specific trend. This study therefore does not attribute the unit-size *trend* itself to a semiconductor effect; its focus is the **consistency between Godeok's local population structure and its supply composition**.
 
 **Figure A2. Nationwide nature of the unit-size trend — macro-cycle adjusted**
-![FigureA2](../analysis/08_macro_adjusted.png)
+![FigureA2](../../analysis/08_macro_adjusted.png)
 <sub>Source: author's calculation (`analysis/08_macro_adjusted.py`).</sub>
 
 ---
@@ -85,7 +85,7 @@ This is the evidence behind the background check summarized in §IV.1 of the man
 Two adjustments compound on the tenure axis. **First, the flow→stock adjustment** is required because transactions are **counts**, so fast-turnover monthly rentals are over-sampled (raw 64% → 50% stock-adjusted). **Second, the Godeok-specific correction** reduces the share of small households, shrinking small-unit demand and with it the rent propensity concentrated in small units, bringing monthly-rent demand down once more from 50% to **43%**. Even with both adjustments, monthly-rent demand remains in the low 40s — locally high relative to control cities, and not enough to overturn the unit-diversification or access conclusions.
 
 **Figure A4. Tenure turnover adjustment — flow vs. stock**
-![FigureA4](../analysis/26_tenure_stock_adjust.png)
+![FigureA4](../../analysis/26_tenure_stock_adjust.png)
 <sub>Source: author's calculation (`analysis/26_tenure_stock_adjust.py`).</sub>
 
 ---
@@ -115,7 +115,7 @@ Two adjustments compound on the tenure axis. **First, the flow→stock adjustmen
 The methodological significance of rejecting the logistic model matches the first lesson in §V.2. Pinning the saturation point to the planned carrying population extrapolates the slope of the early rapid-growth phase as a saturation rate, and **that bias did not surface without ex post validation (backcasting).**
 
 **Figure A5. Backcast validation of the population forecast**
-![FigureA5](../analysis/31_backcast_validation.png)
+![FigureA5](../../analysis/31_backcast_validation.png)
 <sub>Source: author's calculation (`analysis/31_backcast_validation.py`).</sub>
 
 ---

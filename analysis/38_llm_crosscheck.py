@@ -15,6 +15,8 @@
 출력: analysis/38_llm_crosscheck.json  (본문 §3.2 에 인용)
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import json, sqlite3, sys, re
 # 로컬 Ollama 큐 클라이언트(gemma_queue_client.py)가 있는 디렉터리
 _client_dir = _os.environ.get('GEMMA_CLIENT_DIR')
@@ -25,7 +27,7 @@ from gemma_queue_client import GemmaQueueClient
 
 # 원 분석은 로컬 Ollama 의 Gemma 계열 모델로 수행했다.
 MODEL = _os.environ.get('OLLAMA_MODEL', 'gemma3:latest')
-DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
+DB = INVENTORY_DB
 cli = GemmaQueueClient(caller='seoyeon_38_llm_crosscheck', priority=3)
 
 def ask(system, user, timeout=180):

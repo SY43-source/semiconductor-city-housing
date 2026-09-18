@@ -3,6 +3,8 @@
 데이터: shared_data/realprice/realprice_apt_trade.csv (평택 70,615건)
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import csv
 from collections import Counter, defaultdict
 import matplotlib
@@ -13,7 +15,7 @@ import numpy as np
 plt.rcParams['font.family'] = 'AppleGothic'
 plt.rcParams['axes.unicode_minus'] = False
 
-ROWS = [r for r in csv.DictReader(open('/Users/Shared/seoyeon_research/realprice/realprice_apt_trade.csv', encoding='utf-8-sig'))
+ROWS = [r for r in csv.DictReader(open(DATA_ROOT + '/realprice/realprice_apt_trade.csv', encoding='utf-8-sig'))
         if r['region'] == '평택시' and r['excluUseAr'] and r['dealYear']]
 
 AREA_BINS = [(0,60,'~60㎡\n(소형)'),(60,85,'60-85㎡\n(국평3방)'),(85,102,'85-102㎡'),

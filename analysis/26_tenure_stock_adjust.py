@@ -6,13 +6,15 @@
 데이터: godeok_tenure_by_size.csv (면적대별 매매/전세/월세 건수).
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import os,csv
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 plt.rcParams['font.family']='Helvetica'; plt.rcParams['axes.unicode_minus']=False
-EMP='/Users/Shared/seoyeon_research/employment'
+EMP=DATA_ROOT + '/employment'
 order=['소형<60','국평60-85','대형85+']
 # 면적대별 거래건수
 cnt={}

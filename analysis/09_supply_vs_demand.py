@@ -7,6 +7,8 @@
 ⚠️ NAVER 스냅샷=현재 등재 단지 기준(2013+ 신축엔 양호). 세대수=진짜 공급.
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import csv, sqlite3
 from collections import defaultdict
 import matplotlib
@@ -14,9 +16,9 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 plt.rcParams['font.family']='AppleGothic'; plt.rcParams['axes.unicode_minus']=False
-DB='/Users/Shared/seoyeon_inventory_master.sqlite'
-RP='/Users/Shared/seoyeon_research/realprice'
-POP='/Users/Shared/seoyeon_research/population/city_1person_household_2015_2024.csv'
+DB=INVENTORY_DB
+RP=DATA_ROOT + '/realprice'
+POP=DATA_ROOT + '/population/city_1person_household_2015_2024.csv'
 YEARS=list(range(2015,2026))
 GJ_GU=('12210','12240','12270','12300','12330')  # 광주 5구 신코드
 

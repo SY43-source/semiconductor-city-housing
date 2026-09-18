@@ -10,7 +10,7 @@
 
 ---
 
-## 🎯 한눈에 (논문 한 줄)
+## 🎯 In one line
 
 **AI 반도체 양산국이 미·한·대만 3개국뿐이어서 클러스터 신도시는 반복 조성되는데, 고덕은 3방·국민평형 단일 템플릿에 편중돼(84~85㎡ 한 규격군 55.3%) 그 결과 주거 취약계층이 소외된다 — 감당 가능한 주거는 공공임대(소득의 5–8%)에만 있고 민간 재고 84%에는 진입 가격대가 없다.**
 
@@ -25,11 +25,11 @@
 
 ---
 
-## 📊 핵심 수치 → 출처
+## 📊 Key figures and where they come from
 
 > **부호 규약**: gap = **공급 − 수요**. **음수 = 부족**(공급확대 필요), **양수 = 과잉**.
 
-### A. 집중 (§IV.1)
+### A. Concentration — 집중 (§IV.1)
 | 수치 | 값 | 그림/표 | 스크립트 | 데이터 |
 |---|---|---|---|---|
 | 고덕 인구 배수 | 13,651→77,337 (**×5.7**) | 그림 1 | `20_godeok_concentration.py` | KOSIS DT_1B04005N |
@@ -39,7 +39,7 @@
 | 가격배율(외곽 대비) | 0.96→**2.49** (연식통제 1.22→1.67) | (본문) | `12_local_premium_gradient.py`·`16_hedonic.py` | 실거래 매매 |
 | 규격 추세의 전국성 | 거시 보정 시 평택 고유 추세 소멸 | 부그림 A2 | `08_macro_adjusted.py` | 실거래 다도시 |
 
-### B. 인구 구성 (§IV.2)
+### B. Population composition — 인구 구성 (§IV.2)
 | 수치 | 값 | 그림/표 | 스크립트 | 데이터 |
 |---|---|---|---|---|
 | 25–39세 유입 | **+24,986** (청소년의 2.4배·영유아의 4.8배) | 그림 2 | `22_godeok_age.py` | DT_1B04005N |
@@ -47,14 +47,14 @@
 | 0–14세 / 65+ 비중 | **19.4%**(전국 10.3%) / **6.7%**(평택 14.6%) | 인라인표 | `22_..` | DT_1B04005N |
 | **고덕 평균 가구원수** | **2.99~3.46명**(평택 2.18) — 상한=77,337÷22,368, 하한=2018 기저 제외 | 인라인표 | `32_godeok_recalibration.py` | 인구÷아파트세대 실측 |
 
-### C. 공급 (§IV.3)
+### C. Supply — 공급 (§IV.3)
 | 수치 | 값 | 그림/표 | 스크립트 | 데이터 |
 |---|---|---|---|---|
 | 공급 총량 | 29단지·**22,368세대** (민간 분양 재고 기준) | 표 2 | `28_supply_structure.py` | sqlite complexes+pyeong_types |
 | 방수 구성 | 3방 **78.4%** · 4방+ 14.6% · 1–2방 **7.0%** | 표 2 | `28_..` | sqlite `room_count` |
 | 면적 구성 | 국평 **59.0%** · 소형 30.1% · 대형 11.0% | 표 2 | `28_..` | sqlite `exclusive_area_m2` |
 
-### D. gap 지수 (§IV.4) — Gap = 공급 − 수요
+### D. Demand–supply gap — gap 지수 (§IV.4) · Gap = supply − demand
 | 규격 | 수요 | 공급 | Gap (보수~상한 밴드) | 그림/표 | 스크립트 |
 |---|---|---|---|---|---|
 | 소형<60 | 16.8~21.5% | 30.1% | **+0.6 ~ +9.5%p (과잉)** ⚠️조건부 | 표 3·그림 3 | `32_godeok_recalibration.py` |
@@ -69,13 +69,13 @@
 | *(참고) 매핑 민감도* | | | *1차 산정 기준 −5.8 ~ −33.2%p* | 부그림 A1 | `21b_gap_sensitivity.py` |
 | 평택 실측 가구원수 | 1인37.5·2인27.5·3인18.6·4인13.4·5인+3.0% | | | (본문) | `kosis_hhsize_pyeongtaek.py` (DT_1JC1516) |
 
-### E. 시장 분화 (§IV.5)
+### E. Market split — 시장 분화 (§IV.5)
 | 수치 | 값 | 그림/표 | 스크립트 |
 |---|---|---|---|
 | 매매 vs 전월세 소형 | 35~44% < **56~59%** ⚠️거래건수 기준(면적축 미보정) | 그림 4 | `10_rent_analysis.py` |
 | 전월세 월세 비중 | **73.4%** (안성 53.5% · 평택 52.4% 대조검증 → 약 20%p 상회) | 인라인표·그림 4 | `10_..` |
 
-### F. 거리 hedonic (§IV.6)
+### F. Distance hedonic — 거리 hedonic (§IV.6)
 | 수치 | 값 | 그림/표 | 스크립트 |
 |---|---|---|---|
 | 거리 계수 | **−3.7%/km** (p<0.0001) | 표 4·그림 5 | `23_distance_hedonic.py` |
@@ -84,7 +84,7 @@
 | 매칭 표본 | 41,196건 (매칭률 58%) | (본문) | `23_..` |
 | 캠퍼스 지점 민감도 | −2.5 ~ −3.7%/km (정문·P2·중앙) | (본문) | `23_..` |
 
-### G. 설계 예측모델 · 연도별 로드맵 (§IV.7)
+### G. Design model and annual roadmap — 설계 예측모델 (§IV.7)
 | 수치 | 값 | 그림/표 | 스크립트 | 데이터 |
 |---|---|---|---|---|
 | 가구주 25–39세 1인율 | **51.4%** (1–2인 72.9% / 전연령 1인 37.1%) | (본문) | `kosis_headship_pyeongtaek.py` | KOSIS **DT_1JC1511** |
@@ -107,7 +107,7 @@
 | 계획 규모(공시) | K_pop 144,173명 / K_hh 58,300세대 (기공급 22,368) | (본문) | — | 개발계획 공시 |
 | 시뮬레이터 프로파일 민감도 | 실측형 3.23(1인율 16.2%) / 젊은근로형 3.01(21.2%) / 가족형 3.57(10.7%) | 부표 A5 | `design_simulator.html` | 사슬 |
 
-### H. 주거 접근성 · 소외 (§IV.8) ⭐ 본 보고서의 귀결
+### H. Housing access and exclusion — 주거 접근성 (§IV.8) ⭐ where the study lands
 | 수치 | 값 | 그림/표 | 스크립트 | 데이터 |
 |---|---|---|---|---|
 | 국평 중위 매매가 | **5.80억원** (n=905) | 표 7·그림 7 | `35_affordability.py` | 실거래 매매 2024–25 |
@@ -126,9 +126,9 @@
 
 ---
 
-## 🖼 그림·표 목록 (v10 체계)
+## 🖼 Figures and tables (index → [`figures/README.md`](figures/README.md))
 
-### 본문 그림 (1~7) — ⭐=핵심. **7개 전부 본문 인용 있음**
+### Manuscript figures 1–7 — ⭐ = central. All seven are cited in the text
 | 그림 | 내용 | § | 스크립트 | PNG |
 |---|---|---|---|---|
 | 1 | 고덕 집중 (고덕 vs 평택-고덕제외) | IV.1 | `20_godeok_concentration.py` | `analysis/20_*.png` |
@@ -141,7 +141,7 @@
 
 > **통합 원칙(v10)**: 세부를 여러 장으로 쪼개지 않고 한 장에 함축한다. §IV.4 는 v10 초기판까지 그림 3장·8패널(28_+32_+34_)로 같은 이야기를 반복했는데, 이를 **그림 3 한 장(4패널)** 으로 합쳐 "왜 보정하나 → 두 축이 어떻게 다르나 → 공급은 왜 극단인가"의 한 줄기로 만들었다. 표와 수치가 겹치는 그림(`28_supply_structure` = 표 2)은 제거했다.
 
-### 부록 그림 (A1~A5) → [`APPENDIX_v10.md`](paper/Appendix-KO.pdf)
+### Appendix figures A1–A5 → [`paper/Appendix-KO.pdf`](paper/Appendix-KO.pdf)
 | 부그림 | 내용 | 부록 § | 스크립트 |
 |---|---|---|---|
 | A1 | gap 민감도 (매핑 변주) ⚠️1차 산정 기준 | A-2 | `21b_gap_sensitivity.py` |
@@ -150,7 +150,7 @@
 | A4 | 점유 회전율 보정 (flow vs stock) | A-4 | `26_tenure_stock_adjust.py` |
 | A5 | 인구예측 backcast 검증 (로지스틱 기각) | A-5 | `31_backcast_validation.py` |
 
-### 표 (본문 1~11 · 부표 A1~A5)
+### Tables — manuscript 1–11, appendix A1–A5
 | 표 | 내용 | § |  | 부표 | 내용 | 부록 § |
 |---|---|---|---|---|---|---|
 | 1 | 분석 데이터 개요 (D1·D2·D3b·D3c·D7·D8) | III.2 |  | A1 | Entity 기호 정의 (21행) | A-1 |
@@ -166,7 +166,7 @@
 
 > **인라인 대조표(번호 없음)** 2종: 고덕/평택/전국 인구지표(§IV.2) · 고덕/평택/안성 전월세(§IV.5).
 
-### 원고에서 제외된 그림 7종 (PNG·스크립트는 `analysis/` 보존 → 부록 A-7)
+### Figures produced but not included — PNGs and scripts kept in `analysis/` (appendix A-7)
 `13_development_concentration`(그림1 중복) · `12_local_premium_gradient`(그림7 하위집합) · **`21_gap_index_prototype`(기각된 모수의 시각화)** · `16_hedonic`(중복) · `24_design_model`(부표 A4 중복) · `25_model_validation`(부표 A2 중복) · `27_forecast_design`(그림8 통합, 보정 전 모수)
 
 ---
@@ -185,7 +185,7 @@
 | **D8** | **공공임대 입주자모집공고·준공** | **LH 청약플러스·마이홈포털** | (공고 확인분 → 표 9) |
 | — | 파생 산출물 | 저자 계산 | `employment/godeok_demand_recalibrated.csv` · `godeok_design_roadmap.csv` · `godeok_affordability.csv` · **`godeok_forecast_recalibrated.csv`** |
 
-### ⚠️ 데이터 함정 (꼭 알아둘 것)
+### ⚠️ Data pitfalls — 데이터 함정
 - **KOSIS 지역코드 2종**: `DT_1B04005N`(5세별 인구)는 **표준 행정코드**(평택=41220), 그러나 **`DT_1JC1516`·`DT_1JC1511`(가구)는 레거시 순번코드**(평택=**31070**, 경기=31, 서울=11). 표준코드 넣으면 err21.
 - `DT_1JC1516` 세대구성 objL2 = **'00'**(계). `DT_1JC1511` 가구주연령 objL2 = **020~090**(5세 스텝, 020=15-19…090=85+). **085(80–84) 이후 값은 0** → 85+ 헤드십·조건분포는 80–84로 대체(`36_..` 참조).
 - **분당 200건 제한**(2026-07-15~): 초과 시 `err=40`. 모든 호출은 `src/kosis_client.py`의 `kosis_get()` 경유(자동 스로틀+백오프). **`36_..`는 로컬 캐시만 사용해 API 미호출.**
@@ -195,7 +195,7 @@
 
 ---
 
-## 🐍 스크립트 인덱스 (`analysis/`, 실행 = `python3.11`)
+## 🐍 Script index — `analysis/`, run with `python3.11`
 
 **본문 그림 생성(7종)**:
 `20_godeok_concentration`→그림 1 · `22_godeok_age`→그림 2 · **`37_gap_consolidated`→그림 3(통합)** · `10_rent_analysis`→그림 4 · `23_distance_hedonic`→그림 5 · `33_annual_design_roadmap`→그림 6 · `35_affordability`→그림 7
@@ -212,7 +212,7 @@
 
 ---
 
-## 📐 핵심 정의·규약
+## 📐 Definitions and conventions
 
 - **Gap = 공급 − 수요** → **음수 = 부족**(공급확대 필요) / **양수 = 과잉**
 - **면적 밴드**: 소형 <60㎡ / 국민평형(국평) 60–85㎡ / 대형 ≥85㎡ · **방수 밴드**: 1–2방 / 3방 / 4방+
@@ -227,7 +227,7 @@
 
 ---
 
-## ▶️ 재현 방법
+## ▶️ Reproducing the results
 
 ```bash
 export KOSIS_API_KEY=...                                    # .secrets.env 참조 (하드코딩 금지)
@@ -243,7 +243,7 @@ python3.11 src/build_pdf.py v10                               # 한글 본문만
 
 ---
 
-## 🔗 관련 문서
+## 🔗 Related documents
 - **Manuscript**: [`paper/Semiconductor-City-Housing-KO.pdf`](paper/Semiconductor-City-Housing-KO.pdf) / [EN](paper/Semiconductor-City-Housing-EN.pdf) · **Appendix**: [KO](paper/Appendix-KO.pdf) / [EN](paper/Appendix-EN.pdf) / [`APPENDIX_v10_EN.md`](paper/Appendix-EN.pdf)
 - [`archive/versions/_CHANGELOG.md`](archive/versions/_CHANGELOG.md) — revision history (v1–v12) and do-not-cite warnings on withdrawn claims · [`data/DATA_SOURCES.md`](data/DATA_SOURCES.md) — dataset detail
 - [`design_simulator.html`](docs/index.html) 부속 계산 도구 · [`PAPER_WRITING_GUIDE.md`](archive/notes/PAPER_WRITING_GUIDE.md) 작성기법 · [`DATA_READINESS_AND_LITERATURE.md`](archive/notes/DATA_READINESS_AND_LITERATURE.md) 선행문헌

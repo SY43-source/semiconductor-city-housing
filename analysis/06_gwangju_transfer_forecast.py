@@ -8,6 +8,8 @@
 데이터: realprice(광주 병합 + 평택·용인·이천).
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import csv
 from collections import defaultdict
 import matplotlib
@@ -17,7 +19,7 @@ import numpy as np
 
 plt.rcParams['font.family'] = 'AppleGothic'
 plt.rcParams['axes.unicode_minus'] = False
-RP = '/Users/Shared/seoyeon_research/realprice'
+RP = DATA_ROOT + '/realprice'
 
 def load(path, pred=None):
     return [r for r in csv.DictReader(open(path, encoding='utf-8-sig'))

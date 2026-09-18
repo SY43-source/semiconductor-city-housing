@@ -7,6 +7,8 @@
 raw 회귀/변곡점 vs 보정 회귀/변곡점 비교로 '거시가 잡은 것인지 반도체인지' 판별.
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import csv
 from collections import defaultdict
 import numpy as np
@@ -17,7 +19,7 @@ import matplotlib.pyplot as plt
 
 plt.rcParams['font.family']='Helvetica'
 plt.rcParams['axes.unicode_minus'] = False
-RP='/Users/Shared/seoyeon_research/realprice'
+RP=DATA_ROOT + '/realprice'
 YEARS=np.array(range(2015,2026)); x=YEARS.astype(float)
 def load(path,pred): return [r for r in csv.DictReader(open(path,encoding='utf-8-sig')) if r['excluUseAr'] and r['dealYear'] and pred(r)]
 def guk(rows):

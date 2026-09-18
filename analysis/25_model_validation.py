@@ -6,6 +6,8 @@
 데이터: 연령=DT_1B04005N(표준코드), 실측가구원수=DT_1JC1516(레거시코드), 파라미터=P1 CSV(평택).
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import os,sys,csv
 import numpy as np
 import matplotlib
@@ -14,7 +16,7 @@ import matplotlib.pyplot as plt
 plt.rcParams['font.family']='AppleGothic'; plt.rcParams['axes.unicode_minus']=False
 sys.path.insert(0, os.path.join(os.path.dirname(__file__),'..','src'))
 from kosis_client import kosis_get
-EMP='/Users/Shared/seoyeon_research/employment'; HH=['1인','2인','3인','4인','5인+']
+EMP=DATA_ROOT + '/employment'; HH=['1인','2인','3인','4인','5인+']
 YEAR='2024'
 # (표준코드 DT_1B04005N, 레거시코드 DT_1JC1516)
 CITIES={'평택':('41220','31070'),'안성':('41550','31220'),'화성':('41590','31240')}

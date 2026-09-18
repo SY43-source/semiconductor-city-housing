@@ -6,6 +6,8 @@
 데이터: 평택 실거래(realprice_apt_trade.csv). 대조로 안성도 회귀.
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import csv
 from collections import defaultdict
 import numpy as np
@@ -16,7 +18,7 @@ import matplotlib.pyplot as plt
 
 plt.rcParams['font.family'] = 'AppleGothic'
 plt.rcParams['axes.unicode_minus'] = False
-RP = '/Users/Shared/seoyeon_research/realprice'
+RP = DATA_ROOT + '/realprice'
 YEARS = np.array(range(2015, 2026))
 
 def load(path, pred): return [r for r in csv.DictReader(open(path, encoding='utf-8-sig'))

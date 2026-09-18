@@ -6,13 +6,15 @@
 데이터: NAVER 단지메타 sqlite(complexes.approval_year·total_households·sector).
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import sqlite3
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 plt.rcParams['font.family']='AppleGothic'; plt.rcParams['axes.unicode_minus']=False
-DB='/Users/Shared/seoyeon_inventory_master.sqlite'; YEARS=list(range(2013,2026))
+DB=INVENTORY_DB; YEARS=list(range(2013,2026))
 con=sqlite3.connect(DB); cur=con.cursor()
 q="""SELECT approval_year,
  SUM(CASE WHEN (sector LIKE '%고덕%' OR road_name LIKE '%고덕%' OR sector LIKE '%서정%' OR sector LIKE '%지제%') THEN total_households ELSE 0 END),

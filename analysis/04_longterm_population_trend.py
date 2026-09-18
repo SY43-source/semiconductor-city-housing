@@ -9,6 +9,8 @@
 CSV 동시 저장: shared_data/population/city_longterm_pop_1966_2024.csv (연도·지역·인구·출처).
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import csv
 import matplotlib
 matplotlib.use('Agg')
@@ -35,7 +37,7 @@ DATA = [
 ]
 
 # CSV 저장
-OUT_CSV = '/Users/Shared/seoyeon_research/population/city_longterm_pop_1966_2024.csv'
+OUT_CSV = DATA_ROOT + '/population/city_longterm_pop_1966_2024.csv'
 with open(OUT_CSV, 'w', newline='', encoding='utf-8-sig') as f:
     w = csv.writer(f); w.writerow(['year', 'region', 'population', 'source'])
     for y, pt, an, src in DATA:

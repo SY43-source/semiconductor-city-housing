@@ -15,6 +15,8 @@
 출력: analysis/37_gap_consolidated.png
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import os, csv, sqlite3
 import numpy as np
 from scipy.optimize import brentq
@@ -25,7 +27,7 @@ plt.rcParams['font.family']='Helvetica'
 plt.rcParams['axes.unicode_minus'] = False
 
 BASE = REPO
-EMP = '/Users/Shared/seoyeon_research/employment'
+EMP = DATA_ROOT + '/employment'
 HH = ['1', '2', '3', '4', '5+']
 SZ = np.array([1, 2, 3, 4, 5.5])
 
@@ -59,7 +61,7 @@ R_band = np.array([demand(p, MR) for p in P_band])
 
 # ── 공급 규격군 (34_barbell_distribution 과 **동일 쿼리·동일 병합 규칙** 사용) ──
 # ⚠️ 근사·대체값을 쓰지 않는다. DB 접근 실패 시 그림을 그리지 않고 즉시 중단한다.
-DB = '/Users/Shared/seoyeon_inventory_master.sqlite'
+DB = INVENTORY_DB
 con = sqlite3.connect(f'file:{DB}?mode=ro', uri=True)
 rows = con.execute("""SELECT p.exclusive_area_m2, p.units_of_same_area FROM complexes c
  JOIN pyeong_types p ON c.complex_number = p.complex_number

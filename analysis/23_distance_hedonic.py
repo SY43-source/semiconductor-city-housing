@@ -6,6 +6,8 @@
 캠퍼스 기준점=삼성로 114 정문(37.0336,127.0551). haversine.
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import csv,sqlite3,re,math
 import numpy as np
 from scipy import stats
@@ -13,8 +15,8 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 plt.rcParams['font.family']='Helvetica'; plt.rcParams['axes.unicode_minus']=False
-RP='/Users/Shared/seoyeon_research/realprice/realprice_apt_trade.csv'
-DB='/Users/Shared/seoyeon_inventory_master.sqlite'
+RP=DATA_ROOT + '/realprice/realprice_apt_trade.csv'
+DB=INVENTORY_DB
 CAMPUS=(37.0336,127.0551)
 def norm(s):  # 단지명 정규화: 괄호·공백·특수문자 제거
     s=re.sub(r'\(.*?\)','',s or ''); s=re.sub(r'[^가-힣0-9A-Za-z]','',s); return s

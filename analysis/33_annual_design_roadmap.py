@@ -5,6 +5,8 @@
 출력: employment/godeok_design_roadmap.csv + 그림 33
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import os,sys,csv
 import numpy as np
 from scipy.optimize import brentq
@@ -12,7 +14,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 plt.rcParams['font.family']='Helvetica'; plt.rcParams['axes.unicode_minus']=False
-POP='/Users/Shared/seoyeon_research/population'; EMP='/Users/Shared/seoyeon_research/employment'
+POP=DATA_ROOT + '/population'; EMP=DATA_ROOT + '/employment'
 HH=['1','2','3','4','5+']; SZ=np.array([1,2,3,4,5.5])
 K_POP=144173.0; PLAN_HH=58300; BUILT=22368
 # ── 연령군 모수(실측) ──

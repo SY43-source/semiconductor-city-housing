@@ -5,6 +5,8 @@
 고덕 인접/외곽 가격배율·고덕 신규개발과 상관. 2018~2025.
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import os,sys,csv,statistics,sqlite3
 from collections import defaultdict
 import numpy as np
@@ -15,8 +17,8 @@ import matplotlib.pyplot as plt
 plt.rcParams['font.family']='AppleGothic'; plt.rcParams['axes.unicode_minus']=False
 sys.path.insert(0, os.path.join(os.path.dirname(__file__),'..','src'))
 from kosis_client import kosis_get  # 분당 200건 제한 자동 스로틀+백오프
-RP='/Users/Shared/seoyeon_research/realprice'; DB='/Users/Shared/seoyeon_inventory_master.sqlite'
-EMP_CSV='/Users/Shared/seoyeon_research/employment/pyeongtaek_mfg_2018_2025.csv'
+RP=DATA_ROOT + '/realprice'; DB=INVENTORY_DB
+EMP_CSV=DATA_ROOT + '/employment/pyeongtaek_mfg_2018_2025.csv'
 os.makedirs(os.path.dirname(EMP_CSV),exist_ok=True)
 
 # 1) 평택 제조업 고용 (반기→연간 평균), 저장

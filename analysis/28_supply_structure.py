@@ -3,13 +3,15 @@
 데이터: master sqlite(complexes+pyeong_types), 고덕 29단지·22,368세대. room_count·exclusive_area_m2.
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import sqlite3
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 plt.rcParams['font.family']='AppleGothic'; plt.rcParams['axes.unicode_minus']=False
-DB='/Users/Shared/seoyeon_inventory_master.sqlite'
+DB=INVENTORY_DB
 WHERE="c.bjd_code LIKE '41220%' AND (c.sector LIKE '%고덕%' OR c.road_name LIKE '%고덕%') AND p.units_of_same_area>0"
 con=sqlite3.connect(DB)
 ncplx,ntot=con.execute(f"SELECT COUNT(DISTINCT c.complex_number),SUM(p.units_of_same_area) FROM complexes c JOIN pyeong_types p ON c.complex_number=p.complex_number WHERE {WHERE}").fetchone()

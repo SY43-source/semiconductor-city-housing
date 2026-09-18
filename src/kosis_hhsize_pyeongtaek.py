@@ -3,6 +3,9 @@
 발견한 param: objL1=지역(레거시 순번코드, 평택=31070), objL2=세대구성 '00'=계, itmId T10=일반가구/T21~T25=가구원수 1~5명.
 출력: employment/pyeongtaek_hhsize_2015_2024.csv
 """
+import os as _os
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import os,sys,csv
 sys.path.insert(0, os.path.dirname(__file__))
 from kosis_client import kosis_get  # 분당 200건 제한 자동 스로틀+백오프
@@ -16,7 +19,7 @@ for itm,lab in ITM.items():
     for d in call(itm):
         if d.get('DT') is None: continue
         y=int(d['PRD_DE']); data.setdefault(y,{})[lab]=int(d['DT'])
-out='/Users/Shared/seoyeon_research/employment/pyeongtaek_hhsize_2015_2024.csv'
+out=DATA_ROOT + '/employment/pyeongtaek_hhsize_2015_2024.csv'
 os.makedirs(os.path.dirname(out),exist_ok=True)
 cols=['year']+list(ITM.values())
 with open(out,'w',newline='') as f:

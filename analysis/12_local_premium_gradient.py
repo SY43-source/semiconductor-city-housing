@@ -6,6 +6,8 @@
 데이터: 평택 실거래(realprice_apt_trade.csv), umdNm 그룹.
 """
 import os as _os; REPO = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+DATA_ROOT = _os.environ.get('DATA_ROOT', '/Users/Shared/seoyeon_research')
+INVENTORY_DB = _os.environ.get('INVENTORY_DB', '/Users/Shared/seoyeon_inventory_master.sqlite')
 import csv, statistics
 from collections import defaultdict
 import numpy as np
@@ -13,7 +15,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 plt.rcParams['font.family']='AppleGothic'; plt.rcParams['axes.unicode_minus']=False
-RP='/Users/Shared/seoyeon_research/realprice'; YEARS=list(range(2015,2026))
+RP=DATA_ROOT + '/realprice'; YEARS=list(range(2015,2026))
 NEAR=['고덕','서정동','지제동','동삭동','신촌']       # 캠퍼스·고덕신도시권(동부)
 FAR=['안중읍','포승읍','팽성읍','청북읍','현덕면','오성면']  # 서부 외곽
 pt=[r for r in csv.DictReader(open(f'{RP}/realprice_apt_trade.csv',encoding='utf-8-sig')) if r['region']=='평택시']
