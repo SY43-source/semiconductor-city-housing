@@ -4,7 +4,7 @@
 
 A study of Godeok New Town, built next to Samsung's Pyeongtaek Campus, using 409,585 official real-estate transactions (2015–2025), Statistics Korea population data, and 29,014 unit-type records normalized from listing data.
 
-**Author**: Seoyeon Jeon · Single-authored student research manuscript, not submitted for publication.
+**Author**: Seoyeon Jeon · Student research manuscript, not submitted for publication.
 
 ---
 
