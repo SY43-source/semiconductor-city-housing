@@ -75,7 +75,7 @@ claim in the paper  →  EVIDENCE_MAP.md  →  analysis/NN_*.py  →  data/DATA_
 | [`LIMITATIONS.md`](LIMITATIONS.md) | What the study does not establish — which results are robust and which are conditional |
 | [`analysis/`](analysis/) | 40 numbered analysis scripts and the figures they produce |
 | [`figures/`](figures/) | Index mapping each figure number in the paper to its image and script |
-| [`src/`](src/) | Data collectors (Statistics Korea OpenAPI) and the PDF builder |
+| [`src/`](src/) | Data collectors (Statistics Korea OpenAPI), the PDF builder, and a consistency checker that verifies the documents still agree with the manuscript |
 | [`data/`](data/) | [DATA_SOURCES.md](data/DATA_SOURCES.md) — provenance and how to re-obtain each dataset |
 | [`archive/versions/`](archive/versions/) | Every earlier draft (v1–v11) and the revision log |
 | [`archive/notes/`](archive/notes/) | Planning and methodology notes written during the study |

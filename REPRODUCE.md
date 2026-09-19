@@ -73,6 +73,30 @@ Reads [`paper/source/*.md`](paper/source/) and writes the four PDFs in [`paper/`
 
 ---
 
+## Checking that the documents still agree with the paper
+
+The manuscript is the source; `README.md`, `EVIDENCE_MAP.md`, `LIMITATIONS.md`, `REPRODUCE.md`, and `figures/README.md` are derived from it. When the manuscript is revised, a derived document can silently fall behind — that has happened here, which is why there is a check for it:
+
+```bash
+python3.11 src/consistency_check.py
+```
+
+It anchors ten key quantities in the manuscript, then verifies that the Korean and English editions agree on them, that no withdrawn figure survives in a current document, that no link points at a superseded draft, that every figure the manuscript references exists, and that every relative link resolves.
+
+| Exit | Meaning |
+|---|---|
+| 0 | Pass |
+| 1 | A mismatch was found — fix it |
+| **2** | **Could not check** — e.g. an anchor quantity was not found in the manuscript, which usually means the manuscript changed and the anchor list needs updating. **This is not a pass.** |
+
+The separation of 2 from 0 is deliberate: a checker that finds nothing because it looked at nothing should not report success. To confirm the checker actually catches faults, it can inject them into a copy of the repository and assert the exit code:
+
+```bash
+python3.11 src/consistency_check.py --self-test
+```
+
+---
+
 ## Verifying a single claim without running anything
 
 The fastest path for a specific number is [`EVIDENCE_MAP.md`](EVIDENCE_MAP.md), which maps each statistic to its figure or table, the script that computed it, and the dataset underneath. [`figures/README.md`](figures/README.md) does the same starting from a figure number.

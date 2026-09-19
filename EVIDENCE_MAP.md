@@ -248,6 +248,6 @@ python3.11 src/build_pdf.py v10                               # 한글 본문만
 ---
 
 ## 🔗 Related documents
-- **Manuscript**: [`paper/Semiconductor-City-Housing-KO.pdf`](paper/Semiconductor-City-Housing-KO.pdf) / [EN](paper/Semiconductor-City-Housing-EN.pdf) · **Appendix**: [KO](paper/Appendix-KO.pdf) / [EN](paper/Appendix-EN.pdf) / [`APPENDIX_v10_EN.md`](paper/Appendix-EN.pdf)
+- **Manuscript**: [`paper/Semiconductor-City-Housing-KO.pdf`](paper/Semiconductor-City-Housing-KO.pdf) / [EN](paper/Semiconductor-City-Housing-EN.pdf) · **Appendix**: [KO](paper/Appendix-KO.pdf) / [EN](paper/Appendix-EN.pdf)
 - [`archive/versions/_CHANGELOG.md`](archive/versions/_CHANGELOG.md) — revision history (v1–v12) and do-not-cite warnings on withdrawn claims · [`data/DATA_SOURCES.md`](data/DATA_SOURCES.md) — dataset detail
 - [`design_simulator.html`](docs/index.html) 부속 계산 도구 · [`PAPER_WRITING_GUIDE.md`](archive/notes/PAPER_WRITING_GUIDE.md) 작성기법 · [`DATA_READINESS_AND_LITERATURE.md`](archive/notes/DATA_READINESS_AND_LITERATURE.md) 선행문헌
