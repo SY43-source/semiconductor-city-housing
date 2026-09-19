@@ -12,6 +12,8 @@
 
 ## 🎯 In one line
 
+**Godeok New Town was built to a single template — three bedrooms at 84–85㎡, one size band holding 55.3% of all units — for a population the template does not fit. The households squeezed out are not poor by policy's definition: they earn around or above the urban-worker average, and that is precisely why public rental eligibility excludes them. Affordable housing exists there almost only in the public stock (5–8% of income); the private 76% has no enterable price point.**
+
 **AI 반도체 양산국이 미·한·대만 3개국뿐이어서 클러스터 신도시는 반복 조성되는데, 고덕은 3방·국민평형 단일 템플릿에 편중돼(84~85㎡ 한 규격군 55.3%) 그 결과 주거 취약계층이 소외된다 — 감당 가능한 주거는 공공임대(소득의 5–8%)에만 있고 민간 재고 84%에는 진입 가격대가 없다.**
 
 **본 연구의 성격**: 규격 진단 보고서가 아니라 **주거 취약계층 소외에 관한 분석 보고서**(§I.1). 초록은 **연구 배경 → 연구 목적 → 연구 방법 → 주요 결과 → 결론 및 시사점** 5부 구조. 소외 대상 = 청년 단독가구 · 신혼/예비 신혼부부 · 저소득 근로가구 · 공공임대 입주자격 우선순위에서 밀리는 가구.
@@ -27,102 +29,104 @@
 
 ## 📊 Key figures and where they come from
 
-> **부호 규약**: gap = **공급 − 수요**. **음수 = 부족**(공급확대 필요), **양수 = 과잉**.
+> **Sign convention** 부호 규약: gap = **supply − demand** (공급 − 수요). **Negative = shortage** 음수=부족 (more supply needed) · **Positive = surplus** 양수=과잉.
+>
+> **Robustness** 강건성: ✅ = direction holds across every household-size anchor and mapping variation tested. ⚠️ = sign is conditional on the mean-household-size band → [`LIMITATIONS.md`](LIMITATIONS.md) §2.
 
 ### A. Concentration — 집중 (§IV.1)
-| 수치 | 값 | 그림/표 | 스크립트 | 데이터 |
+| Quantity 수치 | Value 값 | Exhibit 그림/표 | Script | Data |
 |---|---|---|---|---|
-| 고덕 인구 배수 | 13,651→77,337 (**×5.7**) | 그림 1 | `20_godeok_concentration.py` | KOSIS DT_1B04005N |
-| 고덕 인구 비중 | 3.1→12.7% | 그림 1 | `20_..` | DT_1B04005N |
-| 2022+ 순증 | 고덕 +34,878 / 평택나머지 −3,005 | 그림 1 | `20_..` | DT_1B04005N |
-| 개발 점유 | 1→**73%** | (본문) | `13_development_concentration.py` | 단지 sqlite |
-| 가격배율(외곽 대비) | 0.96→**2.49** (연식통제 1.22→1.67) | (본문) | `12_local_premium_gradient.py`·`16_hedonic.py` | 실거래 매매 |
-| 규격 추세의 전국성 | 거시 보정 시 평택 고유 추세 소멸 | 부그림 A2 | `08_macro_adjusted.py` | 실거래 다도시 |
+| Godeok population multiple — 인구 배수 | 13,651→77,337 (**×5.7**) | Fig. 1 | `20_godeok_concentration.py` | KOSIS DT_1B04005N |
+| Godeok share of city population — 인구 비중 | 3.1→12.7% | Fig. 1 | `20_..` | DT_1B04005N |
+| Net increase since 2022 — 순증 | 고덕 +34,878 / 평택나머지 −3,005 | Fig. 1 | `20_..` | DT_1B04005N |
+| Share of new development — 개발 점유 | 1→**73%** | (in text) | `13_development_concentration.py` | 단지 sqlite |
+| Price ratio vs outskirts — 가격배율 | 0.96→**2.49** (연식통제 1.22→1.67) | (in text) | `12_local_premium_gradient.py`·`16_hedonic.py` | 실거래 매매 |
+| Unit-size trend is nationwide — 추세의 전국성 | 거시 보정 시 평택 고유 추세 소멸 | Fig. A2 | `08_macro_adjusted.py` | 실거래 다도시 |
 
 ### B. Population composition — 인구 구성 (§IV.2)
-| 수치 | 값 | 그림/표 | 스크립트 | 데이터 |
+| Quantity 수치 | Value 값 | Exhibit 그림/표 | Script | Data |
 |---|---|---|---|---|
-| 25–39세 유입 | **+24,986** (청소년의 2.4배·영유아의 4.8배) | 그림 2 | `22_godeok_age.py` | DT_1B04005N |
-| 청소년 5–19 / 영유아 0–4 유입 | +10,451 / +5,255 | 그림 2 | `22_..` | DT_1B04005N |
-| 0–14세 / 65+ 비중 | **19.4%**(전국 10.3%) / **6.7%**(평택 14.6%) | 인라인표 | `22_..` | DT_1B04005N |
-| **고덕 평균 가구원수** | **2.99~3.46명**(평택 2.18) — 상한=77,337÷22,368, 하한=2018 기저 제외 | 인라인표 | `32_godeok_recalibration.py` | 인구÷아파트세대 실측 |
+| Inflow aged 25–39 — 유입 | **+24,986** (청소년의 2.4배·영유아의 4.8배) | Fig. 2 | `22_godeok_age.py` | DT_1B04005N |
+| Inflow aged 5–19 / 0–4 — 유입 | +10,451 / +5,255 | Fig. 2 | `22_..` | DT_1B04005N |
+| Share aged 0–14 / 65+ — 비중 | **19.4%**(전국 10.3%) / **6.7%**(평택 14.6%) | inline table | `22_..` | DT_1B04005N |
+| **Mean household size, Godeok** — 평균 가구원수 | **2.99~3.46명**(평택 2.18) — 상한=77,337÷22,368, 하한=2018 기저 제외 | inline table | `32_godeok_recalibration.py` | 인구÷아파트세대 실측 |
 
 ### C. Supply — 공급 (§IV.3)
-| 수치 | 값 | 그림/표 | 스크립트 | 데이터 |
+| Quantity 수치 | Value 값 | Exhibit 그림/표 | Script | Data |
 |---|---|---|---|---|
-| 공급 총량 | 29단지·**22,368세대** (민간 분양 재고 기준) | 표 2 | `28_supply_structure.py` | sqlite complexes+pyeong_types |
-| 방수 구성 | 3방 **78.4%** · 4방+ 14.6% · 1–2방 **7.0%** | 표 2 | `28_..` | sqlite `room_count` |
-| 면적 구성 | 국평 **59.0%** · 소형 30.1% · 대형 11.0% | 표 2 | `28_..` | sqlite `exclusive_area_m2` |
+| Total supply — 공급 총량 | 29단지·**22,368세대** (민간 분양 재고 기준) | Table 2 | `28_supply_structure.py` | sqlite complexes+pyeong_types |
+| Room-count composition — 방수 구성 | 3방 **78.4%** · 4방+ 14.6% · 1–2방 **7.0%** | Table 2 | `28_..` | sqlite `room_count` |
+| Floor-area composition — 면적 구성 | 국평 **59.0%** · 소형 30.1% · 대형 11.0% | Table 2 | `28_..` | sqlite `exclusive_area_m2` |
 
 ### D. Demand–supply gap — gap 지수 (§IV.4) · Gap = supply − demand
-| 규격 | 수요 | 공급 | Gap (보수~상한 밴드) | 그림/표 | 스크립트 |
+| Unit class 규격 | Demand 수요 | Supply 공급 | Gap (band 밴드) | Exhibit | Script |
 |---|---|---|---|---|---|
-| 소형<60 | 16.8~21.5% | 30.1% | **+0.6 ~ +9.5%p (과잉)** ⚠️조건부 | 표 3·그림 3 | `32_godeok_recalibration.py` |
-| 국평60-85 | 49.9~52.8% | 59.0% | +6.2 ~ +9.1%p (과잉) | 표 3·그림 3 | `32_..` |
-| **대형85+** | 20.5~26.5% | 11.0% | **−9.5 ~ −15.5%p (부족)** ⚠️조건부 | 표 3·그림 3 | `32_..` |
-| **1–2방** | 22.7~32.4% | 7.0% | **−15.7 ~ −25.4%p (부족)** ✅강건 | 표 3·그림 3 | `32_..` |
-| 3방 | 51.8~55.8% | 78.4% | +22.6 ~ +26.6%p (과잉) ✅강건 | 표 3·그림 3 | `32_..` |
-| 4방+ | — | 14.6% | −1.2 ~ −6.9%p (경미 부족) | 표 3 | `32_..` |
-| 1인가구 비율 | — | — | 37.5%(1차) → **12.4~20.4%**(보정) | 표 3 | `32_..` |
-| **공급 단일규격 집중** | — | — | **84~85㎡ 12,366세대 = 55.3%** (상위 3규격군 84.8%, 총 14규격군) | 그림 3-④ | `34_barbell_distribution.py` |
-| *(참고) 1차 산정 소형* | *47.9%* | *30.1%* | *−17.8%p* — **기각**(m̄=2.18, 관측과 1.2명 괴리) | 표 3 첫 열 | `21_gap_index_prototype.py` |
-| *(참고) 매핑 민감도* | | | *1차 산정 기준 −5.8 ~ −33.2%p* | 부그림 A1 | `21b_gap_sensitivity.py` |
-| 평택 실측 가구원수 | 1인37.5·2인27.5·3인18.6·4인13.4·5인+3.0% | | | (본문) | `kosis_hhsize_pyeongtaek.py` (DT_1JC1516) |
+| Small <60㎡ 소형 | 16.8~21.5% | 30.1% | **+0.6 ~ +9.5%p (surplus 과잉)** ⚠️ conditional 조건부 | Table 3·Fig. 3 | `32_godeok_recalibration.py` |
+| Standard 60–85㎡ 국평 | 49.9~52.8% | 59.0% | +6.2 ~ +9.1%p (surplus 과잉) | Table 3·Fig. 3 | `32_..` |
+| **Large ≥85㎡ 대형** | 20.5~26.5% | 11.0% | **−9.5 ~ −15.5%p (shortage 부족)** ⚠️ conditional 조건부 | Table 3·Fig. 3 | `32_..` |
+| **1–2 rooms 1–2방** | 22.7~32.4% | 7.0% | **−15.7 ~ −25.4%p (shortage 부족)** ✅ robust 강건 | Table 3·Fig. 3 | `32_..` |
+| 3 rooms 3방 | 51.8~55.8% | 78.4% | +22.6 ~ +26.6%p (surplus 과잉) ✅ robust 강건 | Table 3·Fig. 3 | `32_..` |
+| 4+ rooms 4방+ | — | 14.6% | −1.2 ~ −6.9%p (slight shortage 경미 부족) | Table 3 | `32_..` |
+| Single-person share — 1인가구 비율 | — | — | 37.5%(1차) → **12.4~20.4%**(보정) | Table 3 | `32_..` |
+| **Concentration in one size band** — 단일규격 집중 | — | — | **84~85㎡ 12,366세대 = 55.3%** (상위 3규격군 84.8%, 총 14규격군) | Fig. 3-④ | `34_barbell_distribution.py` |
+| *(참고) 1차 산정 소형* | *47.9%* | *30.1%* | *−17.8%p* — **기각**(m̄=2.18, 관측과 1.2명 괴리) | Table 3 첫 열 | `21_gap_index_prototype.py` |
+| *(참고) 매핑 민감도* | | | *1차 산정 기준 −5.8 ~ −33.2%p* | Fig. A1 | `21b_gap_sensitivity.py` |
+| Observed household sizes, Pyeongtaek — 실측 가구원수 | 1인37.5·2인27.5·3인18.6·4인13.4·5인+3.0% | | | (in text) | `kosis_hhsize_pyeongtaek.py` (DT_1JC1516) |
 
 ### E. Market split — 시장 분화 (§IV.5)
-| 수치 | 값 | 그림/표 | 스크립트 |
+| Quantity 수치 | Value 값 | Exhibit 그림/표 | Script |
 |---|---|---|---|
-| 매매 vs 전월세 소형 | 35~44% < **56~59%** ⚠️거래건수 기준(면적축 미보정) | 그림 4 | `10_rent_analysis.py` |
-| 전월세 월세 비중 | **73.4%** (안성 53.5% · 평택 52.4% 대조검증 → 약 20%p 상회) | 인라인표·그림 4 | `10_..` |
+| Small units: sales vs leases — 매매 vs 전월세 | 35~44% < **56~59%** ⚠️거래건수 기준(면적축 미보정) | Fig. 4 | `10_rent_analysis.py` |
+| Monthly-rent share of leases — 월세 비중 | **73.4%** (안성 53.5% · 평택 52.4% 대조검증 → 약 20%p 상회) | inline table·Fig. 4 | `10_..` |
 
 ### F. Distance hedonic — 거리 hedonic (§IV.6)
-| 수치 | 값 | 그림/표 | 스크립트 |
+| Quantity 수치 | Value 값 | Exhibit 그림/표 | Script |
 |---|---|---|---|
-| 거리 계수 | **−3.7%/km** (p<0.0001) | 표 4·그림 5 | `23_distance_hedonic.py` |
-| 신도시 더미(순프리미엄) | +3.2% | 표 4·그림 5 | `23_..` |
-| 고덕 제외 표본 | −3.7%/km (n=37,281) → 근접효과는 신도시의 산물 아님 | 표 4 | `23_..` |
-| 매칭 표본 | 41,196건 (매칭률 58%) | (본문) | `23_..` |
-| 캠퍼스 지점 민감도 | −2.5 ~ −3.7%/km (정문·P2·중앙) | (본문) | `23_..` |
+| Distance coefficient — 거리 계수 | **−3.7%/km** (p<0.0001) | Table 4·Fig. 5 | `23_distance_hedonic.py` |
+| New-town dummy (net premium) — 신도시 더미 | +3.2% | Table 4·Fig. 5 | `23_..` |
+| Sample excluding Godeok — 고덕 제외 | −3.7%/km (n=37,281) → 근접효과는 신도시의 산물 아님 | Table 4 | `23_..` |
+| Matched sample — 매칭 표본 | 41,196건 (매칭률 58%) | (in text) | `23_..` |
+| Sensitivity to campus reference point — 지점 민감도 | −2.5 ~ −3.7%/km (정문·P2·중앙) | (in text) | `23_..` |
 
 ### G. Design model and annual roadmap — 설계 예측모델 (§IV.7)
-| 수치 | 값 | 그림/표 | 스크립트 | 데이터 |
+| Quantity 수치 | Value 값 | Exhibit 그림/표 | Script | Data |
 |---|---|---|---|---|
-| 가구주 25–39세 1인율 | **51.4%** (1–2인 72.9% / 전연령 1인 37.1%) | (본문) | `kosis_headship_pyeongtaek.py` | KOSIS **DT_1JC1511** |
-| 헤드십 ρ | 20–24세 0.17 → 40대+ 0.57 | (본문) | `kosis_headship_pyeongtaek.py` | DT_1JC1511 ÷ DT_1B04005N |
-| 신규 유입 1인율 | 39.3% → **보정 16.1%** | 부표 A4 | `24_design_model.py`·`32_..` | 사슬 |
-| 분포 평균 가구원수 | 2.22명(관측과 1.2명 괴리) → **보정 3.23명** | 부표 A4 | `32_..` | 사슬 |
-| 점유(flow→stock) | 매매 10→31 / 전세 26→19 / 월세 64→**50%** | 부그림 A4 | `26_tenure_stock_adjust.py` | `godeok_tenure_by_size.csv` |
-| **점유(+고덕 보정)** | 매매 **35** / 전세 **22** / 월세 **43%** | 부표 A4 | `36_forecast_design_recalibrated.py` | 사슬 |
-| 검증 MAPE(이식) | 평택 0.8 / 안성 6.0 / 화성 11.0% | 부표 A2 | `25_model_validation.py` | DT_1JC1516·DT_1B04005N |
-| 모델 민감도 | 매핑 변주에도 1–2방 부족 부호 유지 | 부그림 A3 | `24b_model_sensitivity.py` | 사슬 |
-| 예측모형 선택 | 로지스틱 MAPE 33.8% **기각**(전 origin 과대예측) → **선형 5.6% 채택** (감쇠선형 13.3%) | 부표 A3·부그림 A5 | `31_backcast_validation.py` | DT_1B04005N |
-| 개발 진척률 | 2025년 계획인구의 53.6% (별도 출처 사업 진척률 약 52%와 일치) | (본문) | `31_..` | 개발계획 공시 |
-| 연간 유입(2026–31) | 10,958명/년 → **신규 3,392세대/년** | 표 5·그림 6 | `33_annual_design_roadmap.py` | 사슬 |
-| 연간 평형 배분 | 소형 845 · 국평 1,749 · 대형 799세대 (1–2방 927·3방 1,832·4방+ 633·월세 1,446) | 표 5·그림 6 | `33_..` | 사슬 |
-| 포화 시점 | **2032년** (계획 인구 144,173명 도달) ⚠️이후 값은 하한 | 표 5 | `33_..` | 선형모형 |
-| 10년 누적 | **20,692세대** (밴드 19,317~22,353) = 계획잔여 35,932의 **58%** → 총량 과잉 위험 | 표 5 | `33_..` | 사슬 |
+| 가구주 25–39세 1인율 | **51.4%** (1–2인 72.9% / 전연령 1인 37.1%) | (in text) | `kosis_headship_pyeongtaek.py` | KOSIS **DT_1JC1511** |
+| 헤드십 ρ | 20–24세 0.17 → 40대+ 0.57 | (in text) | `kosis_headship_pyeongtaek.py` | DT_1JC1511 ÷ DT_1B04005N |
+| 신규 유입 1인율 | 39.3% → **보정 16.1%** | Table A4 | `24_design_model.py`·`32_..` | 사슬 |
+| 분포 평균 가구원수 | 2.22명(관측과 1.2명 괴리) → **보정 3.23명** | Table A4 | `32_..` | 사슬 |
+| 점유(flow→stock) | 매매 10→31 / 전세 26→19 / 월세 64→**50%** | Fig. A4 | `26_tenure_stock_adjust.py` | `godeok_tenure_by_size.csv` |
+| **점유(+고덕 보정)** | 매매 **35** / 전세 **22** / 월세 **43%** | Table A4 | `36_forecast_design_recalibrated.py` | 사슬 |
+| 검증 MAPE(이식) | 평택 0.8 / 안성 6.0 / 화성 11.0% | Table A2 | `25_model_validation.py` | DT_1JC1516·DT_1B04005N |
+| 모델 민감도 | 매핑 변주에도 1–2방 부족 부호 유지 | Fig. A3 | `24b_model_sensitivity.py` | 사슬 |
+| 예측모형 선택 | 로지스틱 MAPE 33.8% **기각**(전 origin 과대예측) → **선형 5.6% 채택** (감쇠선형 13.3%) | Table A3·Fig. A5 | `31_backcast_validation.py` | DT_1B04005N |
+| 개발 진척률 | 2025년 계획인구의 53.6% (별도 출처 사업 진척률 약 52%와 일치) | (in text) | `31_..` | 개발계획 공시 |
+| 연간 유입(2026–31) | 10,958명/년 → **신규 3,392세대/년** | Table 5·Fig. 6 | `33_annual_design_roadmap.py` | 사슬 |
+| 연간 평형 배분 | 소형 845 · 국평 1,749 · 대형 799세대 (1–2방 927·3방 1,832·4방+ 633·월세 1,446) | Table 5·Fig. 6 | `33_..` | 사슬 |
+| 포화 시점 | **2032년** (계획 인구 144,173명 도달) ⚠️이후 값은 하한 | Table 5 | `33_..` | 선형모형 |
+| 10년 누적 | **20,692세대** (밴드 19,317~22,353) = 계획잔여 35,932의 **58%** → 총량 과잉 위험 | Table 5 | `33_..` | 사슬 |
 | **계획기간 궤적(보정 후)** | 1인율 **16.0→12.9%** · 1–2방 27.2→24.2% · 월세 42.9→42.0% · 평균 가구원수 3.23→3.36명 | **표 6** | `36_forecast_design_recalibrated.py` | 사슬 |
-| **2035 부호 강건성** | 3방 +21.3~+24.6 / 1–2방 −22.0~−13.0 / 대형 −17.0~−11.1 / 소형 +3.7~+12.0 %p (3앵커 전체) | 표 6 | `36_..` | 사슬 |
-| *(참고) 보정 전 궤적* | *1인율 39→34% · 1–2방 52→48% · 월세 50→49%* — 수준이 §IV.4와 불정합 | 표 6 참고열 | `27_forecast_design.py` | 사슬 |
-| 계획 규모(공시) | K_pop 144,173명 / K_hh 58,300세대 (기공급 22,368) | (본문) | — | 개발계획 공시 |
-| 시뮬레이터 프로파일 민감도 | 실측형 3.23(1인율 16.2%) / 젊은근로형 3.01(21.2%) / 가족형 3.57(10.7%) | 부표 A5 | `design_simulator.html` | 사슬 |
+| **2035 부호 강건성** | 3방 +21.3~+24.6 / 1–2방 −22.0~−13.0 / 대형 −17.0~−11.1 / 소형 +3.7~+12.0 %p (3앵커 전체) | Table 6 | `36_..` | 사슬 |
+| *(참고) 보정 전 궤적* | *1인율 39→34% · 1–2방 52→48% · 월세 50→49%* — 수준이 §IV.4와 불정합 | Table 6 참고열 | `27_forecast_design.py` | 사슬 |
+| 계획 규모(공시) | K_pop 144,173명 / K_hh 58,300세대 (기공급 22,368) | (in text) | — | 개발계획 공시 |
+| 시뮬레이터 프로파일 민감도 | 실측형 3.23(1인율 16.2%) / 젊은근로형 3.01(21.2%) / 가족형 3.57(10.7%) | Table A5 | `design_simulator.html` | 사슬 |
 
 ### H. Housing access and exclusion — 주거 접근성 (§IV.8) ⭐ where the study lands
-| 수치 | 값 | 그림/표 | 스크립트 | 데이터 |
+| Quantity 수치 | Value 값 | Exhibit 그림/표 | Script | Data |
 |---|---|---|---|---|
-| 국평 중위 매매가 | **5.80억원** (n=905) | 표 7·그림 7 | `35_affordability.py` | 실거래 매매 2024–25 |
-| 소형 / 대형 중위 매매가 | 3.40억(n=557) / 7.10억(n=95) | 표 7 | `35_..` | 실거래 |
-| **국평 PIR** | **16.1 / 11.6 / 9.7배** (연소득 3,600/5,000/6,000만) vs 국제기준 5.1배 | 표 7·그림 7-① | `35_..` | 실거래 + 소득 시나리오 |
-| 자가 월상환 부담률 | 국평 **65 / 47 / 39%** (LTV 70%·금리 4%·30년) | 표 8·그림 7-② | `35_..` | 실거래 |
-| **소형 월세 — 공공** | **24만원 = 소득의 8 / 6 / 5%** (명시단지 27만 n=3,460 · 번호단지 21만 n=1,110) | 표 8 | `35_..` | 전월세 실거래, 전환율 5.5% |
-| **소형 월세 — 민간** | **89만원 = 소득의 30 / 21 / 18%** (n=1,047) | 표 8 | `35_..` | 전월세 실거래 |
-| 소형 월세 공공 비중 | **81%** (4,570 / 5,617건) → 혼합 중위 29만원은 민간 시장가 아님 | 표 8 | `35_..` | 전월세 실거래 |
-| 국평 / 대형 민간 월세 | 125만원(42/30/25%) / 126만원<sup>†</sup>(혼합, 분리 미실시) | 표 8 | `35_..` | 전월세 실거래 |
-| **공공임대 재고** | **4,640세대 이상 = 재고의 16.2%↑** (LH2 1,600·LH15 1,295·LH12 900·LH35 549·LH17 296) ⚠️하한 | 표 9 | (공고 수집) | LH 청약플러스·마이홈 공고 |
-| 재고 재산정 | 민간분양 21,708(75.9%)·민간임대 2,249(7.9%)·공공임대 4,640(16.2%) = **28,597세대**, 임대 계 **24.1%** ⚠️하한 | 표 10 | 저자 집계 | 단지메타 + 공고 병합 |
-| 실거래상 공공임대 비중 | 고덕 전월세 10,190건 중 **49.3%** (명시 5단지 34.0%) | (본문) | `35_..` | 전월세 실거래 |
-| 공고 임대조건 | LH2 16형 보증금 2,280만·월 10만 / 경기행복주택 청년 보증금 1,905만·월 9만 | (본문) | (공고) | LH·GH 공고 |
-| 계획 vs 실현 점유 | 계획 분양 **97.0%** vs 실현 월세 **73.4%** (역전) | 그림 7-③ | `35_..` | 개발계획 + 실거래 |
+| Median sale price, standard unit — 국평 중위가 | **5.80억원** (n=905) | Table 7·Fig. 7 | `35_affordability.py` | 실거래 매매 2024–25 |
+| Median sale price, small / large — 중위가 | 3.40억(n=557) / 7.10억(n=95) | Table 7 | `35_..` | 실거래 |
+| **Price-to-income ratio, standard unit** — 국평 PIR | **16.1 / 11.6 / 9.7배** (연소득 3,600/5,000/6,000만) vs 국제기준 5.1배 | Table 7·Fig. 7-① | `35_..` | 실거래 + 소득 시나리오 |
+| Mortgage burden as share of income — 자가 부담률 | 국평 **65 / 47 / 39%** (LTV 70%·금리 4%·30년) | Table 8·Fig. 7-② | `35_..` | 실거래 |
+| **Small-unit monthly rent — public** 공공 | **24만원 = 소득의 8 / 6 / 5%** (명시단지 27만 n=3,460 · 번호단지 21만 n=1,110) | Table 8 | `35_..` | 전월세 실거래, 전환율 5.5% |
+| **Small-unit monthly rent — private** 민간 | **89만원 = 소득의 30 / 21 / 18%** (n=1,047) | Table 8 | `35_..` | 전월세 실거래 |
+| Public share of small-unit rent transactions — 공공 비중 | **81%** (4,570 / 5,617건) → 혼합 중위 29만원은 민간 시장가 아님 | Table 8 | `35_..` | 전월세 실거래 |
+| Private monthly rent, standard / large — 민간 월세 | 125만원(42/30/25%) / 126만원<sup>†</sup>(혼합, 분리 미실시) | Table 8 | `35_..` | 전월세 실거래 |
+| **Public rental stock** — 공공임대 재고 | **7,720 units = 25.7% of stock** — 공고로 전량 확정(하한 단서 해제) | Table 10 Table 10 | (공고 수집) | LH·GH 입주자모집공고 + 건축물대장 |
+| **Stock recomputation** — 재고 재산정 | 민간분양 21,708 (72.1%) · 민간임대 660 (2.2%) · 공공임대 **7,720 (25.7%)** = **30,088세대**, 임대 계 **8,380 (27.9%)** | Table 11 Table 11 | 저자 집계 | 단지메타 + 공고 병합 |
+| Public rental share in transaction records — 실거래상 비중 | 고덕 전월세 10,190건 중 **49.3%** (명시 5단지 34.0%) | (in text) | `35_..` | 전월세 실거래 |
+| Rent terms from official notices — 공고 임대조건 | LH2 16형 보증금 2,280만·월 10만 / 경기행복주택 청년 보증금 1,905만·월 9만 | (in text) | (공고) | LH·GH 공고 |
+| Planned vs realized tenure — 계획 vs 실현 | 계획 분양 **97.0%** vs 실현 월세 **73.4%** (역전) | Fig. 7-③ | `35_..` | 개발계획 + 실거래 |
 
 ---
 
@@ -161,7 +165,7 @@
 | 6 | **계획기간 궤적(보정 후)** | IV.7 |  | | | |
 | 7 | 자가 진입 장벽 (PIR) | IV.8 |  | | | |
 | 8 | **월 주거비 부담률 (공공/민간 분리)** | IV.8 |  | | | |
-| 9 | 공공임대 단지 (확인분 4,640세대) | IV.8 |  | | | |
+| 9 | 공공임대 단지 Public rental complexes (7,720세대) | IV.8 |  | | | |
 | 10 | 재고 점유유형 재산정 (자료원 병합) | IV.8 |  | | | |
 
 > **인라인 대조표(번호 없음)** 2종: 고덕/평택/전국 인구지표(§IV.2) · 고덕/평택/안성 전월세(§IV.5).
@@ -177,7 +181,7 @@
 |---|---|---|---|
 | D1 | 아파트 매매 실거래 | 국토부 RTMSDataSvcAptTrade | `realprice/realprice_apt_trade.csv` (+전월세 `_rent_pt.csv`) |
 | D2 | 5세별 인구 | KOSIS **DT_1B04005N** | `population/city_population_5yr_*.csv`, `population/godeok_age_year_matrix.csv` |
-| D3 | 1인가구 비율 | KOSIS DT_1YL21161 | `population/city_1person_household_*.csv` |
+| D3 | Single-person share — 1인가구 비율 | KOSIS DT_1YL21161 | `population/city_1person_household_*.csv` |
 | D3b | 가구원수별 가구(실측) | KOSIS **DT_1JC1516** | `employment/pyeongtaek_hhsize_2015_2024.csv` |
 | D3c | 가구주연령×가구원수(실측) | KOSIS **DT_1JC1511** | `employment/pyeongtaek_head_age_hhsize_2024.csv` (+`_headship_2024.csv`) |
 | D3d | 고덕 점유(매매/전세/월세) | 국토부 실거래 파생 | `employment/godeok_tenure_by_size.csv` |
@@ -191,7 +195,7 @@
 - **분당 200건 제한**(2026-07-15~): 초과 시 `err=40`. 모든 호출은 `src/kosis_client.py`의 `kosis_get()` 경유(자동 스로틀+백오프). **`36_..`는 로컬 캐시만 사용해 API 미호출.**
 - **⚠️ 단지 메타(NAVER)는 분양·매매 중심 → 공공임대 미수록.** 전국 검색에서도 '평택고덕경기행복주택' 0건. 임대·공공 관련 집계는 **반드시 실거래 + 공고를 병합**할 것. v8이 이 결손을 "LH 0건"이라는 사실로 오독했다.
 - **⚠️ 명목 분류 금지.** 임대 판별(단지명 → `lease_households` 실측 필드)과 지역 판별(단지명 '고덕' 매칭 → **법정동 기준**)을 모두 교체했다. 후자는 오포착 26건·누락 126건이 있었고 소형 중위가가 3.54→3.40억으로 바뀌었다. 재현 시 각 분류 기준이 명목인지 실측인지 먼저 확인.
-- **⚠️ 세 모집단 병존**: 규격 22,368 / 민간 점유 23,957 / 재고 재산정 28,597세대. 비율 인용 시 모집단 확인 필수.
+- **⚠️ Three populations coexist** 세 모집단 병존: unit composition 규격 22,368 / private tenure 민간 점유 23,957 / recomputed stock 재고 재산정 **30,088**세대. 비율 인용 시 모집단 확인 필수 → [`LIMITATIONS.md`](LIMITATIONS.md) §6.
 
 ---
 
@@ -223,7 +227,7 @@
 - **PIR** = 중위 매매가 ÷ 연소득. 국제 부담기준(Demographia) 5.1배 이상 = "심각하게 감당 불가"
 - **월세 실질부담** = 월세 + 보증금 × 전월세전환율(5.5%) ÷ 12. **감당선 = 월소득의 30%**(cost-burdened 기준)
 - **MAPE**: 예측-실측 평균절대오차율(작을수록 정확)
-- **강건성 표기 규약**: ✅강건 = 모수(m̄ 밴드)·매핑 변주 전체에서 부호 유지(방수 축) / ⚠️조건부 = m̄ 가정에 따라 부호 변동 가능(면적 축)
+- **강건성 표기 규약**: ✅ robust 강건 = 모수(m̄ 밴드)·매핑 변주 전체에서 부호 유지(방수 축) / ⚠️ conditional 조건부 = m̄ 가정에 따라 부호 변동 가능(면적 축)
 
 ---
 
