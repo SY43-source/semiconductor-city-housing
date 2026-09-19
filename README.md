@@ -71,6 +71,8 @@ claim in the paper  →  EVIDENCE_MAP.md  →  analysis/NN_*.py  →  data/DATA_
 |---|---|
 | [`paper/`](paper/) | Current manuscript and appendix, Korean and English, plus Markdown sources |
 | [`EVIDENCE_MAP.md`](EVIDENCE_MAP.md) | Number → figure/table → script → dataset index |
+| [`REPRODUCE.md`](REPRODUCE.md) | The command behind each figure and table, and what a clone can and cannot reproduce |
+| [`LIMITATIONS.md`](LIMITATIONS.md) | What the study does not establish — which results are robust and which are conditional |
 | [`analysis/`](analysis/) | 40 numbered analysis scripts and the figures they produce |
 | [`figures/`](figures/) | Index mapping each figure number in the paper to its image and script |
 | [`src/`](src/) | Data collectors (Statistics Korea OpenAPI) and the PDF builder |
@@ -116,10 +118,14 @@ export INVENTORY_DB=/path/to/complex_metadata.sqlite
 
 See [`data/README.md`](data/README.md) for the expected layout and [`data/DATA_SOURCES.md`](data/DATA_SOURCES.md) for what each dataset is and where to obtain it. Raw datasets are not redistributed here.
 
+[`REPRODUCE.md`](REPRODUCE.md) lists the command behind every figure and table.
+
 To rebuild the PDFs from the Markdown sources: `python3.11 src/build_pdf.py all`
 
 ---
 
 ## Scope and limits
 
-This is a consistency and access diagnosis, not a causal claim and not an optimal-allocation result. Section V.4 of the manuscript states seven limitations in full, including the household-size band that the floor-area conclusion is conditional on, and the fact that the income figures are scenarios rather than observed household incomes.
+This is a consistency and access diagnosis, not a causal claim and not an optimal-allocation result.
+
+**[LIMITATIONS.md](LIMITATIONS.md)** states what the study does not establish, including which results are robust and which are conditional. In short: the room-count conclusion holds across every assumption tested; the floor-area conclusion depends on a household-size band; and the income figures are scenarios rather than observed household incomes.
